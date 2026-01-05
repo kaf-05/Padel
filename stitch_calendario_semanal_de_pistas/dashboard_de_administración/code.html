@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard de Administración - Padel</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "primary-dark": "#0eb561",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1a3328",
+                        "text-main-light": "#111814",
+                        "text-main-dark": "#e8ecea",
+                        "text-sec-light": "#618975",
+                        "text-sec-dark": "#8faea0",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for horizontal scrolling */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen pb-24 text-text-main-light dark:text-text-main-dark selection:bg-primary selection:text-background-dark">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center justify-between px-4 py-3">
+<div class="flex items-center gap-3">
+<div class="relative size-10 overflow-hidden rounded-full ring-2 ring-primary ring-offset-2 ring-offset-background-light dark:ring-offset-background-dark">
+<img alt="Administrator profile picture showing a smiling woman" class="h-full w-full object-cover" data-alt="Administrator profile picture showing a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtiNxJxXndMnGAb7RZH-GdsfBN0OmLl5zAZyOSaPK4HBj2G628QrCodiZ1mbOFOlhcI9nAfBWksEVWqZiMfHEK4H8wzL_tqpS3Y5oaKzZgFY_kk1NP31s9b69QoXatSDrK4eiFpLSgXmrp4hPCTxgcsSesSNuguW8v9PGtLuzgvzyaGqAbE0ozS6PjgJIwTRESBEKbXPEE7w1UINAUU0W7K-zEGrUj3W9HY5uob2TVre-QL4O_5wI_kRwvmnkt78qGyzBIDpA6RhE"/>
+<div class="absolute bottom-0 right-0 size-2.5 rounded-full bg-primary border-2 border-white dark:border-background-dark"></div>
+</div>
+<div>
+<h1 class="text-sm font-medium text-text-sec-light dark:text-text-sec-dark">Bienvenido de nuevo</h1>
+<h2 class="text-lg font-bold leading-none">Admin</h2>
+</div>
+</div>
+<button class="flex size-10 items-center justify-center rounded-full bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800 text-text-main-light dark:text-text-main-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2.5 size-2 rounded-full bg-red-500"></span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="w-full max-w-lg mx-auto">
+<!-- Stats Summary -->
+<section class="px-4 pt-6">
+<h3 class="sr-only">Resumen de estadísticas</h3>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 snap-x">
+<!-- Card 1: Occupancy -->
+<div class="snap-start shrink-0 w-[160px] flex flex-col justify-between p-4 rounded-xl bg-card-light dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-start justify-between">
+<div class="p-2 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined text-xl">analytics</span>
+</div>
+<span class="flex items-center text-xs font-bold text-green-600 dark:text-primary">
+<span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>
+                            +5%
+                        </span>
+</div>
+<div class="mt-3">
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark font-medium">Ocupación Hoy</p>
+<p class="text-2xl font-bold mt-1">85%</p>
+</div>
+</div>
+<!-- Card 2: Active Bookings -->
+<div class="snap-start shrink-0 w-[160px] flex flex-col justify-between p-4 rounded-xl bg-card-light dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-start justify-between">
+<div class="p-2 rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined text-xl">calendar_today</span>
+</div>
+<span class="flex items-center text-xs font-bold text-green-600 dark:text-primary">
+<span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>
+                            +2
+                        </span>
+</div>
+<div class="mt-3">
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark font-medium">Reservas Activas</p>
+<p class="text-2xl font-bold mt-1">12</p>
+</div>
+</div>
+<!-- Card 3: Revenue (Placeholder) -->
+<div class="snap-start shrink-0 w-[160px] flex flex-col justify-between p-4 rounded-xl bg-card-light dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-start justify-between">
+<div class="p-2 rounded-lg bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+<span class="material-symbols-outlined text-xl">payments</span>
+</div>
+</div>
+<div class="mt-3">
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark font-medium">Ingresos Hoy</p>
+<p class="text-2xl font-bold mt-1">320€</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Management Grid -->
+<section class="px-4 mt-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold text-text-main-light dark:text-text-main-dark">Gestión</h2>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- Pistas -->
+<button class="group flex flex-col items-start gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-800 shadow-sm active:scale-95 transition-all hover:border-primary dark:hover:border-primary text-left">
+<div class="rounded-full bg-primary/10 p-3 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-symbols-outlined">sports_tennis</span>
+</div>
+<div>
+<h3 class="text-base font-bold">Pistas</h3>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark mt-1">4 Activas, 1 Mant.</p>
+</div>
+</button>
+<!-- Reservas -->
+<button class="group flex flex-col items-start gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-800 shadow-sm active:scale-95 transition-all hover:border-primary dark:hover:border-primary text-left">
+<div class="rounded-full bg-primary/10 p-3 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-symbols-outlined">event_available</span>
+</div>
+<div>
+<h3 class="text-base font-bold">Reservas</h3>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark mt-1">Ver agenda diaria</p>
+</div>
+</button>
+<!-- Usuarios -->
+<button class="group flex flex-col items-start gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-800 shadow-sm active:scale-95 transition-all hover:border-primary dark:hover:border-primary text-left">
+<div class="rounded-full bg-primary/10 p-3 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<h3 class="text-base font-bold">Usuarios</h3>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark mt-1">Roles y permisos</p>
+</div>
+</button>
+<!-- Intervalos -->
+<button class="group flex flex-col items-start gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-800 shadow-sm active:scale-95 transition-all hover:border-primary dark:hover:border-primary text-left">
+<div class="rounded-full bg-primary/10 p-3 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<h3 class="text-base font-bold">Intervalos</h3>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark mt-1">90 min defecto</p>
+</div>
+</button>
+</div>
+</section>
+<!-- Quick Actions & Recent Activity -->
+<section class="px-4 mt-8">
+<h2 class="text-xl font-bold text-text-main-light dark:text-text-main-dark mb-4">Actividad Reciente</h2>
+<div class="flex flex-col gap-3">
+<!-- Activity Item 1 -->
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="size-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center shrink-0">
+<img alt="User avatar for Juan Perez" class="size-10 rounded-full object-cover" data-alt="User avatar for Juan Perez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAysWyPCWknTaA5GOytvPs8GFM4tmLB1F7A6N4y-BY_frl14I57RFh3IMpI_b8dp_KH9xVDgznYS98oDz7COKZthnsvUpF6LnkH0vSF3szT3OFa2rTstNRHfXeV2-du-7zSWMiWHFej3mak80nUdwcqpA5oUKE2jSR71FOUWKhZcNH6AdIeKu1jZ_Cby90YJ9MvX0cVWMElns5KLJg_-StEH9NsmrlMw2KQYDE8b0uD55F4cTfmqga_2sSBFPE1EbxRycydzGBYX_U"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Juan Pérez reservó Pista 1</p>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark">Hace 10 minutos • 18:30 - 20:00</p>
+</div>
+<span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 dark:bg-green-900/30 dark:text-green-400">Auto</span>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="size-10 rounded-full bg-primary/20 text-primary-dark dark:text-primary flex items-center justify-center shrink-0 font-bold">
+                        MR
+                    </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">María Rodriguez canceló</p>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark">Hace 45 minutos • Pista 3</p>
+</div>
+<span class="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10 dark:bg-red-900/30 dark:text-red-400">Cancelada</span>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-card-dark border border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="size-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center shrink-0">
+<img alt="User avatar for Carlos Ruiz" class="size-10 rounded-full object-cover" data-alt="User avatar for Carlos Ruiz" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlSWq4BgoE1hdftX-Wry13dABKKQtr7s-XkQflePT5tL8CV5Nge8G3glbTYef5DlQUrWTVbcG90i0huYZcBlScVpYL7NN4o-UQBUG_WMxrT3QWpMRKWVR8nLS5FieIMeQSfWfoXqepuyPprRnrBbjr0DYcDUkJRM6e0ntwhLpoAR57MJRN30TKWmD1-yURBlFv-8OA_1lFuckgoFYPlyAAiHCdVyaTwVS9ViKaB-dMpDYGLBnLSx2iIaDiaBNkmk7qdsndvb2uJus"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Carlos Ruiz (Profesor)</p>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark">Bloqueo manual • Pista 2</p>
+</div>
+<span class="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 dark:bg-blue-900/30 dark:text-blue-400">Clase</span>
+</div>
+</div>
+<button class="w-full mt-4 py-2 text-sm font-medium text-text-sec-light dark:text-text-sec-dark hover:text-primary dark:hover:text-primary transition-colors">
+                Ver toda la actividad
+            </button>
+</section>
+<!-- Quick Access to Users (Example of list deep dive) -->
+<section class="px-4 mt-6 mb-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold text-text-main-light dark:text-text-main-dark">Profesores</h2>
+<a class="text-sm font-medium text-primary hover:underline" href="#">Ver todos</a>
+</div>
+<div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+<div class="flex items-center gap-3 p-3 pr-6 rounded-full bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-800 shadow-sm shrink-0">
+<img alt="Profesor Carlos" class="size-10 rounded-full object-cover" data-alt="Profesor Carlos" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_czUBhxm70_6eHCc5q0EOFV5VjHUd2tmgBjdwSYn2ePu9uq8FOBOwryJhema0H6xja-Tlz2h7IkQEpEH8i5RXeigodx3WYHKzLUzvPZnB3zCg6Zt2jyZeHnPeEiAERwIGXrwj6gkJjcdqAHb_16BQfJreBUZCuFp0cEDGkWqqvhDEL6Amo-6o5k9iXEUEsoWz9TBqEkqWhGeId27oxqiyGAAMT4ng8P4mudETeRErFmhMAi8PEdQ2ENsHL0fivBuraSr_gCOPXeQ"/>
+<div>
+<p class="text-sm font-bold">Carlos R.</p>
+<p class="text-[10px] uppercase tracking-wider text-primary font-bold">Head Coach</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 pr-6 rounded-full bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-800 shadow-sm shrink-0">
+<img alt="Profesora Ana" class="size-10 rounded-full object-cover" data-alt="Profesora Ana" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1nysR9878NrBm1uLcKbv11Nqa0lBHg5uniPV8La_hGx9pXOjqh_9ypYKAeZHNbq2h3YGlEz-ydYU4YkEslYNgNJSQJM_2XY_lQbumSEbzW1jkm4wY_Yj8aufCjQGBe5sOFVFWs7yeXOFXDVOc0PzyjdYf9asuaTIat6-XVxX-Fil1oQsSrZFgJo_vI2ha12t9fjhxS56BavS6B-4Loqc2kU7dUUwdjjjnXCWLN_GEbLpZnkEZT3zBgApyidwm6CNjl3D_JPNsa9c"/>
+<div>
+<p class="text-sm font-bold">Ana M.</p>
+<p class="text-[10px] uppercase tracking-wider text-primary font-bold">Entrenador</p>
+</div>
+</div>
+<button class="flex items-center gap-2 p-3 px-5 rounded-full bg-gray-50 dark:bg-card-dark/50 border border-dashed border-gray-300 dark:border-gray-700 shrink-0 text-text-sec-light dark:text-text-sec-dark hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+<span class="text-sm font-medium">Añadir</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-24 right-4 z-40 flex items-center gap-2 rounded-full bg-primary px-5 py-3.5 text-background-dark font-bold shadow-lg shadow-primary/30 transition-transform active:scale-95 hover:bg-primary-dark">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Reserva Manual</span>
+</button>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-card-dark/95 backdrop-blur-lg border-t border-gray-200 dark:border-gray-800 pb-safe safe-area-inset-bottom">
+<div class="flex justify-around items-center h-16 max-w-lg mx-auto px-2">
+<a class="flex flex-col items-center justify-center w-full h-full text-primary" href="#">
+<span class="material-symbols-outlined filled text-[26px]">dashboard</span>
+<span class="text-[10px] font-medium mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-text-sec-light dark:text-text-sec-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">calendar_month</span>
+<span class="text-[10px] font-medium mt-1">Agenda</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-text-sec-light dark:text-text-sec-dark hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">settings</span>
+<span class="text-[10px] font-medium mt-1">Ajustes</span>
+</a>
+</div>
+</nav>
+<!-- Safe Area Spacing for Bottom Nav on Mobile -->
+<div class="h-6 w-full"></div>
+</body></html>

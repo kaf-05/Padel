@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Perfil de Usuario - Padel App</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#192b23",
+                        "text-main": "#111814",
+                        "text-secondary": "#618975",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white font-display antialiased selection:bg-primary selection:text-black">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center p-4 justify-between h-14">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-text-main dark:text-white">arrow_back_ios_new</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center">Perfil</h2>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</div>
+</header>
+<!-- ProfileHeader -->
+<div class="flex flex-col items-center pt-8 pb-6 px-4">
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-32 w-32 shadow-lg ring-4 ring-white dark:ring-surface-dark" data-alt="Portrait of a male paddle tennis player smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEvw3TkcAARVfA0bDn_Yq_WcAsNfppjV67nClt6JThot7MtJnnekpJTvqBoiKJfcmTtQnU48k00UjHRYpYnjRWhFSRUB8PLpwkCGoLfRfUL91eCyl_aQscg_3NWzv9YqLVOrwIXO9feees87BM-7Iry1Q37ReOozp4DP__4P6sdg3NvPqTVKeB-8La90Fj4lwZCbcV5K4cFA1ra34Xg3gOhLe4jg80A20JxndODyO7t2Tk5WgwrZun_kMbklLwcsrTN-okVNABURQ");'>
+</div>
+<div class="absolute bottom-1 right-1 bg-primary text-black rounded-full p-2 shadow-md flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</div>
+</div>
+<div class="flex flex-col items-center mt-4 gap-2">
+<h1 class="text-2xl font-bold text-text-main dark:text-white">Juan Pérez</h1>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/20 text-green-800 dark:text-primary border border-primary/30">
+<span class="material-symbols-outlined text-[16px] mr-1">sports_tennis</span>
+                    Jugador
+                </span>
+</div>
+</div>
+<!-- Form Section -->
+<div class="flex flex-col px-4 gap-6 max-w-lg mx-auto w-full">
+<!-- Personal Information Group -->
+<div class="space-y-4">
+<h3 class="text-sm font-semibold text-text-secondary dark:text-gray-400 uppercase tracking-wider ml-1">Información Personal</h3>
+<!-- Name Field -->
+<div class="group">
+<label class="block mb-2 text-sm font-medium text-text-main dark:text-gray-200">Nombre Completo</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500">person</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3.5 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl text-text-main dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm" type="text" value="Juan Pérez"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="group">
+<label class="block mb-2 text-sm font-medium text-text-main dark:text-gray-200">Email</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500">mail</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3.5 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl text-text-main dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm" type="email" value="juan@padel.com"/>
+</div>
+</div>
+<!-- Phone Field -->
+<div class="group">
+<label class="block mb-2 text-sm font-medium text-text-main dark:text-gray-200">Teléfono</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500">phone_iphone</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3.5 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl text-text-main dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm" type="tel" value="+34 600 000 000"/>
+</div>
+</div>
+</div>
+<!-- Security Group -->
+<div class="space-y-4 pt-2">
+<h3 class="text-sm font-semibold text-text-secondary dark:text-gray-400 uppercase tracking-wider ml-1">Seguridad</h3>
+<button class="w-full flex items-center justify-between p-4 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined">lock_reset</span>
+</div>
+<span class="font-medium text-text-main dark:text-white">Cambiar Contraseña</span>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+</div>
+<!-- Actions -->
+<div class="pt-6 pb-4 space-y-4">
+<button class="w-full bg-primary hover:bg-[#0fd671] text-[#102219] font-bold py-4 px-6 rounded-xl shadow-lg shadow-primary/20 transform active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">save</span>
+                    Guardar Cambios
+                </button>
+<button class="w-full bg-transparent hover:bg-red-50 dark:hover:bg-red-900/10 text-red-500 font-medium py-3 px-6 rounded-xl border border-transparent hover:border-red-100 dark:hover:border-red-900/30 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">logout</span>
+                    Cerrar Sesión
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Simulated for iOS context) -->
+<div class="fixed bottom-0 left-0 right-0 bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 pb-safe pt-2 px-6 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-center max-w-lg mx-auto h-16 pb-4">
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors w-16">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors w-16">
+<span class="material-symbols-outlined text-2xl">calendar_month</span>
+<span class="text-[10px] font-medium">Reservas</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary w-16 relative">
+<div class="absolute -top-3 w-12 h-1 bg-primary rounded-b-full"></div>
+<span class="material-symbols-outlined text-2xl fill-current">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</button>
+</div>
+</div>
+</body></html>

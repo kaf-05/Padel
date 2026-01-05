@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mis Reservas - Padel App</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "primary-dark": "#0eb562",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a3326",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        /* Custom scrollbar hiding for clean mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-white pb-20">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-white/10">
+<div class="flex items-center px-4 py-3 justify-between">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-800 dark:text-white">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center text-slate-900 dark:text-white">Mis Reservas</h2>
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-800 dark:text-white">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Content Container -->
+<main class="w-full max-w-md mx-auto flex flex-col gap-4 px-4 pt-4">
+<!-- Segmented Buttons -->
+<div class="w-full">
+<div class="flex h-12 w-full items-center justify-center rounded-xl bg-gray-200 dark:bg-surface-dark p-1">
+<!-- Active Tab -->
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-primary-dark dark:has-[:checked]:text-primary text-gray-500 dark:text-gray-400 text-sm font-semibold leading-normal transition-all duration-200">
+<span class="truncate">Próximas</span>
+<input checked="" class="invisible w-0 h-0" name="reserva-type" type="radio" value="proximas"/>
+</label>
+<!-- Inactive Tab -->
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-primary-dark dark:has-[:checked]:text-primary text-gray-500 dark:text-gray-400 text-sm font-semibold leading-normal transition-all duration-200">
+<span class="truncate">Historial</span>
+<input class="invisible w-0 h-0" name="reserva-type" type="radio" value="historial"/>
+</label>
+</div>
+</div>
+<!-- Section Title -->
+<div class="flex items-center justify-between pt-2">
+<h3 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Esta semana</h3>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">2 reservas</span>
+</div>
+<!-- Upcoming Reservation Card 1 (Active) -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-gray-100 dark:border-white/5 transition-transform active:scale-[0.99]">
+<div class="flex items-start justify-between gap-3">
+<!-- Date Badge -->
+<div class="flex flex-col items-center justify-center rounded-lg bg-background-light dark:bg-background-dark w-16 h-16 shrink-0 border border-gray-100 dark:border-white/5">
+<span class="text-primary-dark dark:text-primary text-xs font-bold uppercase">OCT</span>
+<span class="text-slate-900 dark:text-white text-xl font-bold">14</span>
+</div>
+<!-- Info -->
+<div class="flex flex-col flex-1 gap-1">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Pista Central</p>
+<span class="inline-flex items-center rounded-full bg-primary/20 px-2 py-0.5 text-xs font-bold text-green-800 dark:text-green-300">
+                            CONFIRMADA
+                        </span>
+</div>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 mt-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<p class="text-sm font-medium">18:30 - 20:00 (90 min)</p>
+</div>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-lg">sports_tennis</span>
+<p class="text-sm font-medium">Pista Indoor • Cristal</p>
+</div>
+</div>
+</div>
+<!-- Card Actions -->
+<div class="flex items-center gap-3 mt-1 pt-3 border-t border-gray-100 dark:border-white/10">
+<button class="flex-1 flex h-9 items-center justify-center gap-2 rounded-lg border border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50 px-4 text-xs font-bold text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors">
+<span class="material-symbols-outlined text-lg">cancel</span>
+                    Cancelar
+                </button>
+<button class="flex-1 flex h-9 items-center justify-center gap-2 rounded-lg bg-background-light dark:bg-white/5 px-4 text-xs font-bold text-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-lg">share</span>
+                    Compartir
+                </button>
+</div>
+</div>
+<!-- Upcoming Reservation Card 2 -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-gray-100 dark:border-white/5 transition-transform active:scale-[0.99]">
+<div class="flex items-start justify-between gap-3">
+<!-- Date Badge -->
+<div class="flex flex-col items-center justify-center rounded-lg bg-background-light dark:bg-background-dark w-16 h-16 shrink-0 border border-gray-100 dark:border-white/5">
+<span class="text-primary-dark dark:text-primary text-xs font-bold uppercase">OCT</span>
+<span class="text-slate-900 dark:text-white text-xl font-bold">16</span>
+</div>
+<!-- Info -->
+<div class="flex flex-col flex-1 gap-1">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Pista 2</p>
+<span class="inline-flex items-center rounded-full bg-primary/20 px-2 py-0.5 text-xs font-bold text-green-800 dark:text-green-300">
+                            CONFIRMADA
+                        </span>
+</div>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 mt-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<p class="text-sm font-medium">10:00 - 11:30 (90 min)</p>
+</div>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-lg">sunny</span>
+<p class="text-sm font-medium">Outdoor • Muro</p>
+</div>
+</div>
+</div>
+<!-- Card Actions -->
+<div class="flex items-center gap-3 mt-1 pt-3 border-t border-gray-100 dark:border-white/10">
+<button class="flex-1 flex h-9 items-center justify-center gap-2 rounded-lg border border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50 px-4 text-xs font-bold text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors">
+<span class="material-symbols-outlined text-lg">cancel</span>
+                    Cancelar
+                </button>
+<button class="flex-1 flex h-9 items-center justify-center gap-2 rounded-lg bg-background-light dark:bg-white/5 px-4 text-xs font-bold text-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-lg">share</span>
+                    Compartir
+                </button>
+</div>
+</div>
+<!-- Section Title: Future -->
+<div class="flex items-center justify-between pt-4">
+<h3 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Próximo Mes</h3>
+</div>
+<!-- Upcoming Reservation Card 3 (Simple) -->
+<div class="group relative flex items-center gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 shadow-sm border border-gray-100 dark:border-white/5 opacity-80 hover:opacity-100 transition-opacity">
+<!-- Date Badge -->
+<div class="flex flex-col items-center justify-center rounded-lg bg-background-light dark:bg-background-dark w-14 h-14 shrink-0 border border-gray-100 dark:border-white/5">
+<span class="text-gray-500 dark:text-gray-400 text-[10px] font-bold uppercase">NOV</span>
+<span class="text-slate-700 dark:text-slate-300 text-lg font-bold">02</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-white text-base font-bold">Pista 4</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">17:30 - 19:00</p>
+</div>
+<button class="size-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/10 text-slate-600 dark:text-white hover:bg-gray-200 dark:hover:bg-white/20">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+<!-- Empty State Illustration Placeholder (Only visible if list is empty, kept hidden for now but ready) -->
+<div class="hidden flex-col items-center justify-center py-12 text-center">
+<div class="w-48 h-32 bg-gray-100 dark:bg-white/5 rounded-2xl mb-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-gray-300">sports_tennis</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Sin reservas activas</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2 max-w-xs">¿Listo para jugar? Reserva tu pista hoy mismo.</p>
+<button class="mt-6 flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-slate-900 hover:bg-primary-dark transition-colors">
+                Reservar Pista
+            </button>
+</div>
+</main>
+<!-- Floating Action Button for New Booking (Optional but good UX) -->
+<div class="fixed bottom-6 right-6 z-40">
+<button class="flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-lg shadow-primary/30 text-slate-900 hover:bg-primary-dark hover:scale-105 transition-all">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<!-- Bottom Tab Navigation (Contextual Awareness) -->
+<nav class="fixed bottom-0 w-full z-50 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-white/10 pb-safe">
+<div class="flex items-center justify-around h-16 max-w-md mx-auto">
+<a class="flex flex-col items-center gap-1 w-full text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 w-full text-primary dark:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">calendar_month</span>
+<span class="text-[10px] font-medium">Reservas</span>
+</a>
+<a class="flex flex-col items-center gap-1 w-full text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</a>
+</div>
+</nav>
+<div class="h-20"></div> <!-- Spacer for fixed bottom nav -->
+</body></html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Calendario Pistas Padel</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "primary-dark": "#0eb561",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2c24",
+                        "text-main": "#111814",
+                        "text-secondary": "#618975",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-white overflow-hidden selection:bg-primary selection:text-black">
+<div class="relative flex flex-col h-screen w-full max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden">
+<header class="flex-none bg-surface-light dark:bg-surface-dark px-4 py-3 flex items-center justify-between border-b border-gray-100 dark:border-gray-800 z-20">
+<button class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-text-main dark:text-white">chevron_left</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="text-lg font-bold leading-tight tracking-[-0.015em]">Calendario Pistas</h1>
+<span class="text-xs font-medium text-text-secondary">Octubre 2023</span>
+</div>
+<button class="p-2 -mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-text-main dark:text-white">chevron_right</span>
+</button>
+</header>
+<main class="flex-1 overflow-y-auto overflow-x-hidden pb-24 scrollbar-hide">
+<div class="bg-surface-light dark:bg-surface-dark pb-4 rounded-b-2xl shadow-sm mb-4">
+<div class="flex items-center justify-between px-4 py-2">
+<p class="text-text-secondary text-sm font-medium">Semana 12 - 18</p>
+<button class="text-primary text-sm font-bold flex items-center gap-1">
+                        Hoy
+                    </button>
+</div>
+<div class="flex overflow-x-auto px-4 gap-3 py-2 scrollbar-hide snap-x">
+<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 opacity-60 snap-start">
+<span class="text-xs text-text-secondary font-medium">LUN</span>
+<span class="text-lg font-bold text-text-main dark:text-gray-400">12</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl bg-primary text-black shadow-lg shadow-primary/30 transform scale-105 snap-center ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-background-dark">
+<span class="text-xs font-bold opacity-80">MAR</span>
+<span class="text-lg font-extrabold">13</span>
+<div class="w-1 h-1 rounded-full bg-black mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark snap-start cursor-pointer hover:border-primary transition-colors">
+<span class="text-xs text-text-secondary font-medium">MIE</span>
+<span class="text-lg font-bold text-text-main dark:text-white">14</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark snap-start cursor-pointer hover:border-primary transition-colors">
+<span class="text-xs text-text-secondary font-medium">JUE</span>
+<span class="text-lg font-bold text-text-main dark:text-white">15</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark snap-start cursor-pointer hover:border-primary transition-colors">
+<span class="text-xs text-text-secondary font-medium">VIE</span>
+<span class="text-lg font-bold text-text-main dark:text-white">16</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark snap-start cursor-pointer hover:border-primary transition-colors">
+<span class="text-xs text-text-secondary font-medium">SAB</span>
+<span class="text-lg font-bold text-text-main dark:text-white">17</span>
+</div>
+</div>
+</div>
+<div class="px-4 mb-4">
+<div class="flex flex-col gap-3 rounded-xl border border-blue-100 bg-blue-50/50 dark:bg-blue-900/20 dark:border-blue-800 p-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-500 mt-0.5">info</span>
+<div>
+<p class="text-text-main dark:text-blue-100 text-sm font-bold leading-tight">Reserva anticipada</p>
+<p class="text-text-secondary dark:text-blue-200/70 text-xs font-normal leading-normal mt-1">
+                                Solo puedes reservar con un máximo de 3 días de antelación.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 mb-3 flex items-end justify-between">
+<h3 class="text-xl font-bold text-text-main dark:text-white">Horarios Disponibles</h3>
+<span class="text-xs font-medium text-text-secondary uppercase tracking-wider">Intervalos 90min</span>
+</div>
+<div class="flex flex-col gap-3 px-4">
+<div class="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-gray-700 shadow-sm transition-all hover:shadow-md hover:border-primary/30">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary dark:text-primary">
+<span class="material-symbols-outlined">sports_tennis</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="text-lg font-bold text-text-main dark:text-white">09:00 - 10:30</h4>
+<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">
+                                    Libre
+                                </span>
+</div>
+<p class="text-sm text-text-secondary">Pista Central • Outdoor</p>
+</div>
+</div>
+<button class="w-full sm:w-auto mt-2 sm:mt-0 px-5 py-2.5 bg-primary hover:bg-primary-dark text-black text-sm font-bold rounded-lg transition-colors shadow-sm shadow-primary/20 flex items-center justify-center gap-2">
+<span>Reservar</span>
+<span class="material-symbols-outlined text-lg">add_circle</span>
+</button>
+</div>
+<div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl bg-gray-50 dark:bg-[#15201b] border border-gray-100 dark:border-gray-800 opacity-90">
+<div class="flex items-center gap-4 opacity-60">
+<div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-500">
+<span class="material-symbols-outlined">block</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="text-lg font-bold text-gray-500 dark:text-gray-400 decoration-slice">10:30 - 12:00</h4>
+<span class="inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/20 px-2 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">
+                                    Ocupado
+                                </span>
+</div>
+<p class="text-sm text-gray-400">Pista 2 • Indoor</p>
+</div>
+</div>
+<div class="hidden sm:block text-xs text-gray-400 font-medium italic pr-2">Reservado</div>
+</div>
+<div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl bg-orange-50/50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-900/30">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-800/30 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">build</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="text-lg font-bold text-text-main dark:text-white">12:00 - 13:30</h4>
+<span class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900/30 px-2 py-0.5 text-xs font-medium text-orange-700 dark:text-orange-400">
+                                    Mantenimiento
+                                </span>
+</div>
+<p class="text-sm text-text-secondary">Limpieza de cristales</p>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-gray-700 shadow-sm transition-all hover:shadow-md hover:border-primary/30">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary dark:text-primary">
+<span class="material-symbols-outlined">sports_tennis</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="text-lg font-bold text-text-main dark:text-white">13:30 - 15:00</h4>
+<span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">
+                                    Libre
+                                </span>
+</div>
+<p class="text-sm text-text-secondary">Pista 3 • Outdoor</p>
+</div>
+</div>
+<button class="w-full sm:w-auto mt-2 sm:mt-0 px-5 py-2.5 bg-primary hover:bg-primary-dark text-black text-sm font-bold rounded-lg transition-colors shadow-sm shadow-primary/20 flex items-center justify-center gap-2">
+<span>Reservar</span>
+<span class="material-symbols-outlined text-lg">add_circle</span>
+</button>
+</div>
+<div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl bg-gray-50 dark:bg-[#15201b] border border-gray-200 dark:border-gray-800 border-dashed">
+<div class="flex items-center gap-4 opacity-70">
+<div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-500">
+<span class="material-symbols-outlined">lock_clock</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="text-lg font-bold text-gray-600 dark:text-gray-400">15:00 - 16:30</h4>
+<span class="inline-flex items-center rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-400">
+                                    Próximamente
+                                </span>
+</div>
+<p class="text-sm text-gray-400">Pista Central • Outdoor</p>
+</div>
+</div>
+<button class="w-full sm:w-auto mt-2 sm:mt-0 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 text-sm font-medium rounded-lg cursor-not-allowed" disabled="">
+                        Fuera de plazo
+                    </button>
+</div>
+</div>
+<div class="h-8"></div>
+</main>
+<nav class="flex-none bg-surface-light dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 px-6 py-3 flex justify-between items-center z-30 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<button class="flex flex-col items-center gap-1 text-primary w-16 group">
+<div class="relative">
+<span class="material-symbols-outlined text-[28px] fill-1 transition-transform group-hover:scale-110">calendar_month</span>
+<span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</div>
+<span class="text-[10px] font-bold">Calendario</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-text-main dark:hover:text-white transition-colors w-16 group">
+<span class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">receipt_long</span>
+<span class="text-[10px] font-medium">Reservas</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-text-main dark:hover:text-white transition-colors w-16 group relative">
+<div class="relative">
+<span class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">notifications</span>
+<span class="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-sm ring-2 ring-surface-light dark:ring-surface-dark">3</span>
+</div>
+<span class="text-[10px] font-medium">Avisos</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-text-main dark:hover:text-white transition-colors w-16 group">
+<span class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</button>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recuperar Contraseña - Padel Booking</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2c24",
+                        "text-main-light": "#111814",
+                        "text-main-dark": "#f0fdf4",
+                        "text-sub-light": "#618975",
+                        "text-sub-dark": "#a3b8ad",
+                        "border-light": "#dbe6e0",
+                        "border-dark": "#2a4035",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-white dark:bg-background-dark">
+<!-- Header / Navigation -->
+<header class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-transparent">
+<button class="flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-surface-dark transition-colors text-text-main-light dark:text-text-main-dark">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
+                Recuperar Cuenta
+            </h2>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col px-6 pt-4 pb-8">
+<!-- Hero Icon / Visual -->
+<div class="flex justify-center py-8">
+<div class="relative flex items-center justify-center size-24 rounded-full bg-primary/10 dark:bg-primary/20">
+<span class="material-symbols-outlined text-primary text-[48px]">lock_reset</span>
+<!-- Decorative subtle element -->
+<div class="absolute -right-2 -bottom-2 bg-background-light dark:bg-background-dark p-1 rounded-full">
+<span class="material-symbols-outlined text-text-sub-light dark:text-text-sub-dark text-[20px]">sports_tennis</span>
+</div>
+</div>
+</div>
+<!-- Headline -->
+<div class="text-center mb-6">
+<h1 class="text-text-main-light dark:text-text-main-dark tracking-tight text-[28px] font-bold leading-tight pb-3">
+                    Olvidé mi Contraseña
+                </h1>
+<p class="text-text-sub-light dark:text-text-sub-dark text-base font-normal leading-relaxed">
+                    No te preocupes. Introduce el correo electrónico asociado a tu cuenta y te enviaremos las instrucciones para restablecer tu contraseña.
+                </p>
+</div>
+<!-- Form -->
+<form class="flex flex-col gap-6 mt-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-text-main-light dark:text-text-main-dark text-sm font-semibold leading-normal ml-1" for="email">
+                        Correo Electrónico
+                    </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-text-sub-light dark:text-text-sub-dark text-[20px]">mail</span>
+</div>
+<input class="form-input flex w-full rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark focus:border-primary focus:ring-1 focus:ring-primary h-14 pl-10 pr-4 text-text-main-light dark:text-text-main-dark placeholder:text-text-sub-light/70 dark:placeholder:text-text-sub-dark/50 text-base font-normal transition-all duration-200" id="email" placeholder="ejemplo@padelclub.com" type="email" value=""/>
+</div>
+<!-- Helper Text -->
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark pl-1 mt-1 opacity-80">
+                        Te enviaremos un enlace mágico de acceso.
+                    </p>
+</div>
+<!-- Submit Button -->
+<button class="w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary hover:bg-[#0fd673] active:scale-[0.98] transition-all text-[#111814] text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/20 mt-4" type="button">
+<span class="truncate">Enviar Enlace de Restablecimiento</span>
+</button>
+</form>
+<!-- Spam Warning -->
+<div class="mt-6 p-4 rounded-lg bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-900/20 flex gap-3 items-start">
+<span class="material-symbols-outlined text-yellow-600 dark:text-yellow-500 text-[20px] shrink-0 mt-0.5">info</span>
+<p class="text-xs text-yellow-800 dark:text-yellow-200/80 leading-relaxed">
+                    Revisa tu carpeta de Spam si no recibes el correo en unos minutos.
+                 </p>
+</div>
+</main>
+<!-- Footer Action -->
+<footer class="p-6 text-center pb-10">
+<p class="text-text-sub-light dark:text-text-sub-dark text-sm">
+                ¿Ya la recordaste? 
+                <a class="text-text-main-light dark:text-text-main-dark font-bold hover:text-primary dark:hover:text-primary transition-colors underline decoration-2 decoration-primary/30 underline-offset-4" href="#">
+                    Volver al Inicio de Sesión
+                </a>
+</p>
+</footer>
+</div>
+<!-- Decorative background elements outside the phone container for desktop view -->
+<div class="fixed inset-0 -z-10 pointer-events-none hidden md:block bg-gray-50 dark:bg-black">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center opacity-5 dark:opacity-10 blur-sm" data-alt="Abstract tennis or padel court texture background"></div>
+</div>
+</body></html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestión de Pistas - Admin</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "primary-content": "#004d2a",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a382b",
+                        "text-main-light": "#111814",
+                        "text-main-dark": "#e0e6e3",
+                        "text-sec-light": "#618975",
+                        "text-sec-dark": "#8ba898",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "0.75rem", 
+                        "xl": "1rem", 
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-xl overflow-hidden">
+<!-- Header / TopAppBar -->
+<header class="sticky top-0 z-20 bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 px-4 py-3 flex items-center justify-between transition-colors">
+<button class="flex items-center justify-center p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-text-main-light dark:text-text-main-dark">
+<span class="material-symbols-outlined !text-[24px]">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold flex-1 text-center">Gestión de Pistas</h1>
+<button class="flex items-center justify-center p-2 -mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-primary font-bold">
+<span class="material-symbols-outlined !text-[24px]">add</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col p-4 gap-6 overflow-y-auto pb-24">
+<!-- Search & Filters -->
+<div class="flex flex-col gap-4">
+<!-- SearchBar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-text-sec-light dark:text-text-sec-dark group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 rounded-xl border-none bg-white dark:bg-surface-dark shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 focus:ring-2 focus:ring-primary placeholder:text-text-sec-light dark:placeholder:text-text-sec-dark text-sm transition-all" placeholder="Buscar pista por nombre..." type="text"/>
+</div>
+<!-- Status Chips -->
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar -mx-4 px-4">
+<button class="shrink-0 px-4 py-2 rounded-full bg-primary text-primary-content text-sm font-semibold shadow-sm transition-transform active:scale-95">
+                        Todas
+                    </button>
+<button class="shrink-0 px-4 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-text-sec-light dark:text-text-sec-dark text-sm font-medium transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 active:bg-gray-100">
+                        Disponibles
+                    </button>
+<button class="shrink-0 px-4 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-text-sec-light dark:text-text-sec-dark text-sm font-medium transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 active:bg-gray-100">
+                        Ocupadas
+                    </button>
+<button class="shrink-0 px-4 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-text-sec-light dark:text-text-sec-dark text-sm font-medium transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 active:bg-gray-100">
+                        Mantenimiento
+                    </button>
+</div>
+</div>
+<!-- Stats Summary -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-white dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col">
+<span class="text-xs font-medium text-text-sec-light dark:text-text-sec-dark uppercase tracking-wider">Total Pistas</span>
+<span class="text-2xl font-bold text-text-main-light dark:text-text-main-dark mt-1">12</span>
+</div>
+<div class="bg-white dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col">
+<span class="text-xs font-medium text-text-sec-light dark:text-text-sec-dark uppercase tracking-wider">En uso hoy</span>
+<span class="text-2xl font-bold text-primary mt-1">8</span>
+</div>
+</div>
+<!-- Court List -->
+<div class="flex flex-col gap-3">
+<h3 class="text-sm font-semibold text-text-sec-light dark:text-text-sec-dark uppercase tracking-wider mb-1 px-1">Listado de Pistas</h3>
+<!-- Card 1: Available -->
+<div class="bg-white dark:bg-surface-dark rounded-2xl p-3 shadow-sm border border-gray-100 dark:border-gray-800 flex items-center gap-3 active:scale-[0.99] transition-transform cursor-pointer">
+<div class="relative size-16 shrink-0 rounded-xl overflow-hidden bg-gray-100">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Blue padel court outdoor sunny day" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYqQ6pJlDt-gGL8nD6lMHc4QiwITvSjZh5pEt9kdMRz-J7vvcWvlocAkDVwLlySeWuTvwPMuOINb6nHBw4xUBgQEH0cYXqWl8T_tOVLf5oVcGwAtGfcgef0XmqLllAL4qkWb_f7KIkWx9anxmS1zG5WMqZ_I12BJSeuHo6i48jWoCDEyge9WHjX2fFKk0PoH719fzd8sWHky-uIi7ip8GrAex4loF_Ice5WsiPUHPhB9xVRKTpAuiO49SSUP1W0qJWlJp0onEBv9c');"></div>
+<div class="absolute top-1 left-1 bg-green-500 size-3 rounded-full border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="text-base font-bold text-text-main-light dark:text-text-main-dark truncate">Pista Central</h4>
+<span class="shrink-0 px-2 py-0.5 rounded-md bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold">Disponible</span>
+</div>
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark truncate mt-0.5">Cristal panorámico • Outdoor</p>
+<div class="flex items-center gap-1 mt-1.5">
+<span class="material-symbols-outlined text-[14px] text-text-sec-light">schedule</span>
+<span class="text-xs text-text-sec-light dark:text-text-sec-dark">Próxima reserva: 18:00</span>
+</div>
+</div>
+<button class="p-2 rounded-full text-text-sec-light hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined !text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Card 2: Occupied -->
+<div class="bg-white dark:bg-surface-dark rounded-2xl p-3 shadow-sm border border-gray-100 dark:border-gray-800 flex items-center gap-3 active:scale-[0.99] transition-transform cursor-pointer">
+<div class="relative size-16 shrink-0 rounded-xl overflow-hidden bg-gray-100">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Indoor padel court with bright lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBw0PgXHPruhSEN4XIusPRPU6_WNgluhJakq0xwfuBygiuQ5xrf9Wn-E2LP1GEMSOQNaDdJwt4kP5w9c0SuV980cOzhCw4GOS7Wz-EP-Gu-YpminCMCV3f28vLogBcVqqSG03Z0XTS9tDb4vRPwOP8rpze4i5L-Ek7U_d1rUWReanRbBH06R41aNG5Wfgd2fUT1R2hqeUifVK08mtMMu6VELzlHrJTeNj7HE3QLlK3JUK13k05E2gLBHv_1YOlZE7axcFcVUPna7gQ');"></div>
+<div class="absolute top-1 left-1 bg-red-500 size-3 rounded-full border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="text-base font-bold text-text-main-light dark:text-text-main-dark truncate">Pista 2 (Indoor)</h4>
+<span class="shrink-0 px-2 py-0.5 rounded-md bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-semibold">Ocupada</span>
+</div>
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark truncate mt-0.5">Muro estándar • Indoor</p>
+<div class="flex items-center gap-1 mt-1.5">
+<span class="material-symbols-outlined text-[14px] text-text-sec-light">person</span>
+<span class="text-xs text-text-sec-light dark:text-text-sec-dark">Clase Juan Pérez</span>
+</div>
+</div>
+<button class="p-2 rounded-full text-text-sec-light hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined !text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Card 3: Maintenance -->
+<div class="bg-white dark:bg-surface-dark rounded-2xl p-3 shadow-sm border border-gray-100 dark:border-gray-800 flex items-center gap-3 opacity-90 active:scale-[0.99] transition-transform cursor-pointer">
+<div class="relative size-16 shrink-0 rounded-xl overflow-hidden bg-gray-100">
+<div class="absolute inset-0 bg-cover bg-center grayscale" data-alt="Tennis court texture ground view" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSx-AFZnf5Z7Ntxw8gKFf6mg853cqQY0WnzYFW0XCFkvdQ7G-5XvCkwZTf09VFEDIy_ud-RXVYiZJzT_GiFWQ8CkWNslr3UF5V0567Bzo_amMtqTAMYVkAN-9UkZTyGvTVMIELGWY3FpP2t17xhugPRXY51pn9R2iyrQlRTzc9_UN74EkW3L5BYXT8PV7ONjEu_eLsazsTrX6Ar8oH-wkx2Ezdqj1BzkXPBXVF1bRmIrz_LZUQG-6vpNRQ_DyKnN7J9A4kjzVeT_M');"></div>
+<div class="absolute top-1 left-1 bg-orange-500 size-3 rounded-full border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="text-base font-bold text-text-main-light dark:text-text-main-dark truncate">Pista 3</h4>
+<span class="shrink-0 px-2 py-0.5 rounded-md bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-xs font-semibold">Mantenimiento</span>
+</div>
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark truncate mt-0.5">Reparación de red</p>
+<div class="flex items-center gap-1 mt-1.5">
+<span class="material-symbols-outlined text-[14px] text-text-sec-light">build</span>
+<span class="text-xs text-text-sec-light dark:text-text-sec-dark">Hasta: 15 Oct</span>
+</div>
+</div>
+<button class="p-2 rounded-full text-text-sec-light hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined !text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Card 4: Available -->
+<div class="bg-white dark:bg-surface-dark rounded-2xl p-3 shadow-sm border border-gray-100 dark:border-gray-800 flex items-center gap-3 active:scale-[0.99] transition-transform cursor-pointer">
+<div class="relative size-16 shrink-0 rounded-xl overflow-hidden bg-gray-100">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Blue padel court side view" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB59zydguteCyFJdVPgA5vNY1iBFWelssSg0l_kDwig8XwrUZnaBh6zP22NH_SGnu6CaZQEv7gQax3W4VVQN3RFuiV0BhFjQvjvM0BTOBdUnkHUB9IicLwg4XOCg6selRTBx3eGaJTxWW97VzRQ8oRbS0hEKKj6uH_rdUmYifhdHrH4FEvkIq55Y7YQHp1No91Qp8Geh7IKAoMmIYXHXikGp5FJ4yAYB4VzYCP1R2pvksAF19Ub_lItpUMMcjCe-qUqoM_0zNek5dc');"></div>
+<div class="absolute top-1 left-1 bg-green-500 size-3 rounded-full border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="text-base font-bold text-text-main-light dark:text-text-main-dark truncate">Pista 4</h4>
+<span class="shrink-0 px-2 py-0.5 rounded-md bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold">Disponible</span>
+</div>
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark truncate mt-0.5">Cristal • Outdoor</p>
+<div class="flex items-center gap-1 mt-1.5">
+<span class="material-symbols-outlined text-[14px] text-text-sec-light">schedule</span>
+<span class="text-xs text-text-sec-light dark:text-text-sec-dark">Libre todo el día</span>
+</div>
+</div>
+<button class="p-2 rounded-full text-text-sec-light hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined !text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Mobile style) -->
+<div class="absolute bottom-6 right-6 z-30">
+<button class="group flex items-center justify-center size-14 rounded-full bg-primary text-primary-content shadow-lg shadow-primary/40 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined !text-[28px] group-hover:rotate-90 transition-transform duration-300">add</span>
+</button>
+</div>
+</div>
+</body></html>
