@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'stitch_calendario_semanal_de_pistas
 
 // Redirect the root URL to the login page
 app.get('/', (req, res) => {
-  res.redirect('/inicio_de_sesion/code.html');
+  res.redirect('/inicio_de_sesión/code.html');
 });
 
 // API endpoints for users
