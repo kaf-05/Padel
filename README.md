@@ -30,12 +30,24 @@ This project is a web application for booking paddle tennis courts.
    ```
 2. Open your browser and navigate to `http://localhost:3000`.
 
-## Deployment
+## Deployment (cPanel)
 
-To deploy this application, you can follow the same steps as running it locally.
+To deploy this application on a cPanel server, follow these steps:
 
-1. Clone the repository to your server.
-2. Install the dependencies with `npm install`.
-3. Start the server with `npm start`.
+1.  **Upload Files:** Upload all project files to the root directory of your domain (e.g., `public_html`).
 
-You may want to use a process manager like `pm2` to keep the application running in the background.
+2.  **Setup Node.js Application:**
+    *   In your cPanel dashboard, find and open the **"Setup Node.js App"** tool.
+    *   Click **"Create Application"**.
+    *   Set **"Application root"** to your project's directory (e.g., `/public_html`).
+    *   Set **"Application startup file"** to `server.js`.
+    *   Choose your desired **"Node.js version"**.
+    *   Click **"Create"**.
+
+3.  **Install Dependencies:**
+    *   Once the application is created, you will see a section for your application. Click on **"Run NPM Install"**. This will install the dependencies listed in `package.json`.
+
+4.  **Start the Application:**
+    *   After the dependencies are installed, click **"Start App"**.
+
+Your application should now be running. cPanel will automatically handle the necessary routing.
