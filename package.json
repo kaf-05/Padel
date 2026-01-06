@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/kaf-05/Padel#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "bcrypt": "^6.0.0",
+    "express": "^4.19.2",
+    "mysql2": "^3.16.0"
   }
 }

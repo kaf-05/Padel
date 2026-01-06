@@ -44,10 +44,18 @@ To deploy this application on a cPanel server, follow these steps:
     *   Choose your desired **"Node.js version"**.
     *   Click **"Create"**.
 
-3.  **Install Dependencies:**
-    *   Once the application is created, you will see a section for your application. Click on **"Run NPM Install"**. This will install the dependencies listed in `package.json`.
+3.  **Set Environment Variables:**
+    *   After the application is created, scroll down to the **"Environment Variables"** section.
+    *   Add the following variables:
+        *   `DB_HOST`: Your database host (e.g., `localhost`).
+        *   `DB_USER`: Your database user (e.g., `xubahvhs_padel`).
+        *   `DB_PASSWORD`: Your database password.
+        *   `DB_NAME`: Your database name (e.g., `xubahvhs_padel`).
 
-4.  **Start the Application:**
+4.  **Install Dependencies:**
+    *   Click on **"Run NPM Install"**. This will install the dependencies listed in `package.json`.
+
+5.  **Start the Application:**
     *   After the dependencies are installed, click **"Start App"**.
 
 Your application should now be running. cPanel will automatically handle the necessary routing.
