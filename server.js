@@ -267,8 +267,21 @@ const createDefaultAdmin = async () => {
   }
 };
 
+const createDefaultCourt = async () => {
+  try {
+    const [rows] = await db.query('SELECT * FROM courts');
+    if (rows.length === 0) {
+      await db.query('INSERT INTO courts (name, type) VALUES (?, ?)', ['Pista 1', 'Standard']);
+      console.log('Default court created.');
+    }
+  } catch (err) {
+    console.error('Error creating default court:', err);
+  }
+};
+
 app.listen(port, async () => {
   await initializeDatabase();
   await createDefaultAdmin();
+  await createDefaultCourt();
   console.log(`Server is running on http://localhost:${port}`);
 });
