@@ -1,127 +1,98 @@
 <!DOCTYPE html>
-
-<html class="light" lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Padel Booking - Inicio de Sesión</title>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Theme Config -->
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#13ec80",
-                        "background-light": "#f6f8f7",
-                        "background-dark": "#102219",
-                        // Custom utility colors for inputs based on the design provided
-                        "input-border-light": "#dbe6e0",
-                        "input-border-dark": "#2a4034",
-                        "input-bg-dark": "#162b21",
-                        "text-main-light": "#111814",
-                        "text-main-dark": "#f0fdf4",
-                        "text-secondary-light": "#618975",
-                        "text-secondary-dark": "#8fa89b",
-                    },
-                    fontFamily: {
-                        "display": ["Lexend", "sans-serif"]
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
+<html class="light" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Padel Booking - Inicio de Sesión</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec80",
+            "background-light": "#f6f8f7",
+            "background-dark": "#102219",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+        },
+      },
     }
-  </style>
-  </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200 antialiased">
-<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root">
-<!-- Hero Image Section -->
-<div class="relative h-48 w-full overflow-hidden rounded-b-[2rem] shadow-sm">
-<div class="absolute inset-0 bg-gradient-to-t from-background-dark/60 to-transparent z-10"></div>
-<img alt="Padel court racket and balls on blue turf" class="h-full w-full object-cover" data-alt="Padel court racket and balls on blue turf" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADOcrJDRkPYRAbejQgrXVxdlDmtjb6dzpT1RYlpHRrzEtjtfIX1KhEHtbYGu6g-guHtcHlHHTEhSMIirg9CQG7C_chFZQN9Kmp1vOU9BZQJz9xMC3qBr50OP-sL6uGurqPl1YyFPfGR0owY6KAchNn-vu4UcigSvGzkx3A3vTD6oAFl_uEPEHFMtYwyuvgXAmPSZqUCB3M1egZtCZl0a0imVdzkcKQNcFZHIHGldegw66t04B9ZE0cratc7OTyL55iDLp7Rvipt5U"/>
-<!-- Logo/Brand Overlay -->
-<div class="absolute bottom-4 left-0 right-0 z-20 flex justify-center">
-<div class="flex items-center justify-center w-12 h-12 bg-primary rounded-xl shadow-lg">
-<span class="material-symbols-outlined text-background-dark" style="font-size: 32px;">sports_tennis</span>
-</div>
-</div>
-</div>
-<!-- Main Content -->
-<div class="flex flex-col flex-1 px-6 pt-6 pb-8 max-w-md mx-auto w-full">
-<!-- Header Text -->
-<div class="text-center mb-8">
-<h1 class="text-text-main-light dark:text-text-main-dark tracking-tight text-[32px] font-bold leading-tight pb-2">Bienvenido de nuevo</h1>
-<p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-normal leading-normal">Reserva tu pista en segundos.</p>
-</div>
-<!-- Login Form -->
-<form class="flex flex-col gap-5" onsubmit="event.preventDefault();">
-<!-- Email Field -->
-<div class="flex flex-col w-full">
-<label class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2 ml-1">Correo electrónico</label>
-<div class="relative flex items-center group">
-<input class="form-input flex w-full resize-none overflow-hidden rounded-lg text-text-main-light dark:text-text-main-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-input-border-light dark:border-input-border-dark bg-white dark:bg-input-bg-dark focus:border-primary h-14 placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark/50 p-[15px] pr-12 text-base font-normal leading-normal transition-all shadow-sm" placeholder="ejemplo@correo.com" type="email" value=""/>
-<div class="absolute right-4 text-text-secondary-light dark:text-text-secondary-dark pointer-events-none flex items-center">
-<span class="material-symbols-outlined">mail</span>
-</div>
-</div>
-</div>
-<!-- Password Field -->
-<div class="flex flex-col w-full">
-<label class="text-text-main-light dark:text-text-main-dark text-sm font-medium leading-normal pb-2 ml-1">Contraseña</label>
-<div class="relative flex items-center group">
-<input class="form-input flex w-full resize-none overflow-hidden rounded-lg text-text-main-light dark:text-text-main-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-input-border-light dark:border-input-border-dark bg-white dark:bg-input-bg-dark focus:border-primary h-14 placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark/50 p-[15px] pr-12 text-base font-normal leading-normal transition-all shadow-sm" placeholder="••••••••" type="password" value=""/>
-<div class="absolute right-4 text-text-secondary-light dark:text-text-secondary-dark cursor-pointer flex items-center hover:text-primary transition-colors">
-<span class="material-symbols-outlined">visibility</span>
-</div>
-</div>
-<!-- Forgot Password Link -->
-<div class="flex justify-end pt-2">
-<a class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary transition-colors" href="#">¿Olvidaste tu contraseña?</a>
-</div>
-</div>
-<!-- Spacer -->
-<div class="h-2"></div>
-<!-- Login Button -->
-<button class="flex items-center justify-center w-full h-14 bg-primary hover:bg-primary/90 active:scale-[0.98] text-background-dark font-bold text-lg rounded-xl shadow-md transition-all duration-200">
-                    Iniciar Sesión
-                </button>
-</form>
-<!-- Social Login Divider -->
-<div class="relative flex py-6 items-center">
-<div class="flex-grow border-t border-input-border-light dark:border-input-border-dark"></div>
-<span class="flex-shrink-0 mx-4 text-text-secondary-light dark:text-text-secondary-dark text-sm">O continúa con</span>
-<div class="flex-grow border-t border-input-border-light dark:border-input-border-dark"></div>
-</div>
-<!-- Social Buttons -->
-<div class="grid grid-cols-2 gap-4">
-<button class="flex items-center justify-center h-12 rounded-lg bg-white dark:bg-input-bg-dark border border-input-border-light dark:border-input-border-dark hover:bg-gray-50 dark:hover:bg-input-bg-dark/80 transition-colors shadow-sm gap-2">
-<span class="material-symbols-outlined text-[20px]">ios</span>
-<span class="text-sm font-medium">Apple</span>
-</button>
-<button class="flex items-center justify-center h-12 rounded-lg bg-white dark:bg-input-bg-dark border border-input-border-light dark:border-input-border-dark hover:bg-gray-50 dark:hover:bg-input-bg-dark/80 transition-colors shadow-sm gap-2">
-<!-- Simple G Icon placeholder since FontAwesome isn't requested, using a generic 'Globe' or similar is safer if no brand icons allowed, but text is fine. -->
-<span class="material-symbols-outlined text-[20px] text-red-500">language</span>
-<span class="text-sm font-medium">Google</span>
-</button>
-</div>
-<!-- Sign Up Footer -->
-<div class="mt-auto pt-8 flex justify-center items-center gap-1">
-<p class="text-text-main-light dark:text-text-main-dark text-sm">¿No tienes cuenta?</p>
-<a class="text-primary hover:underline font-semibold text-sm" href="#">Regístrate</a>
-</div>
-</div>
-</div>
-</body></html>
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <div class="relative h-48 w-full overflow-hidden rounded-b-[2rem] shadow-sm">
+      <div class="absolute inset-0 bg-gradient-to-t from-background-dark/60 to-transparent z-10"></div>
+      <img alt="Padel court racket and balls on blue turf" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADOcrJDRkPYRAbejQgrXVxdlDmtjb6dzpT1RYlpHRrzEtjtfIX1KhEHtbYGu6g-guHtcHlHHTEhSMIirg9CQG7C_chFZQN9Kmp1vOU9BZQJz9xMC3qBr50OP-sL6uGurqPl1YyFPfGR0owY6KAchNn-vu4UcigSvGzkx3A3vTD6oAFl_uEPEHFMtYwyuvgXAmPSZqUCB3M1egZtCZl0a0imVdzkcKQNcFZHIHGldegw66t04B9ZE0cratc7OTyL55iDLp7Rvipt5U" />
+    </div>
+    <div class="flex flex-col flex-1 px-6 pt-6 pb-8 max-w-md mx-auto w-full">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold">Bienvenido de nuevo</h1>
+        <p class="text-gray-500">Reserva tu pista en segundos.</p>
+      </div>
+      <form id="login-form" class="flex flex-col gap-5">
+        <div class="flex flex-col w-full">
+          <label class="text-sm font-medium pb-2 ml-1">Correo electrónico</label>
+          <input class="form-input h-14" placeholder="ejemplo@correo.com" type="email" />
+        </div>
+        <div class="flex flex-col w-full">
+          <label class="text-sm font-medium pb-2 ml-1">Contraseña</label>
+          <input class="form-input h-14" placeholder="••••••••" type="password" />
+        </div>
+        <button class="flex items-center justify-center w-full h-14 bg-primary text-background-dark font-bold text-lg rounded-xl" type="submit">
+          Iniciar Sesión
+        </button>
+      </form>
+      <div id="error-message" class="hidden text-red-500 text-center mt-4"></div>
+      <div class="mt-auto pt-8 flex justify-center items-center gap-1">
+        <p class="text-sm">¿No tienes cuenta?</p>
+        <a class="text-primary hover:underline font-semibold text-sm" href="/registro_de_usuario/code.html">Regístrate</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const email = document.querySelector('input[type="email"]').value;
+      const password = document.querySelector('input[type="password"]').value;
+      const errorMessage = document.getElementById('error-message');
+
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          if (data.must_change_password) {
+            window.location.href = '/perfil_de_usuario/change_password.html';
+          } else {
+            window.location.href = '/';
+          }
+        } else {
+          errorMessage.textContent = data.error || 'Error al iniciar sesión.';
+          errorMessage.classList.remove('hidden');
+        }
+      } catch (error) {
+        errorMessage.textContent = 'Error de conexión. Inténtalo de nuevo.';
+        errorMessage.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
