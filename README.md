@@ -51,6 +51,7 @@ To deploy this application on a cPanel server, follow these steps:
         *   `DB_USER`: Your database user (e.g., `xubahvhs_padel`).
         *   `DB_PASSWORD`: Your database password.
         *   `DB_NAME`: Your database name (e.g., `xubahvhs_padel`).
+        *   `JWT_SECRET`: A long, random string to secure your application's sessions.
 
 4.  **Install Dependencies:**
     *   Click on **"Run NPM Install"**. This will install the dependencies listed in `package.json`.
