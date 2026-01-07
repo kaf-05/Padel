@@ -1,133 +1,113 @@
 <!DOCTYPE html>
-
-<html class="light" lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Registro de Usuario - Padel App</title>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary": "#13ec80",
-              "background-light": "#f6f8f7",
-              "background-dark": "#102219",
-              "surface-light": "#ffffff",
-              "surface-dark": "#1a2c24",
-              "text-main": "#111814",
-              "text-muted": "#618975",
-            },
-            fontFamily: {
-              "display": ["Lexend", "sans-serif"]
-            },
-            borderRadius: {
-              "DEFAULT": "0.25rem", 
-              "lg": "0.5rem", 
-              "xl": "0.75rem", 
-              "2xl": "1rem",
-              "full": "9999px"
-            },
+<html class="light" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Registro de Usuario - Padel App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec80",
+            "background-light": "#f6f8f7",
+            "background-dark": "#102219",
+            "surface-light": "#ffffff",
+            "surface-dark": "#1a2c24",
+            "text-main": "#111814",
+            "text-muted": "#618975",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
           },
         },
-      }
-    </script>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
+      },
     }
-  </style>
-  </head>
-<body class="bg-background-light dark:bg-background-dark font-display antialiased text-text-main dark:text-white transition-colors duration-200">
-<div class="relative flex min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-surface-light dark:bg-surface-dark sm:my-8 sm:rounded-2xl border-x border-gray-100 dark:border-gray-800 sm:border-y h-full">
-<!-- Header Image / Visual Cue -->
-<div class="relative h-48 w-full overflow-hidden rounded-b-3xl">
-<div class="absolute inset-0 bg-gradient-to-b from-primary/30 to-surface-light dark:to-surface-dark z-10"></div>
-<img alt="Close up of a padel racket and ball on a blue court" class="h-full w-full object-cover opacity-80" data-alt="Close up of a padel racket and ball on a blue court" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc4y0hBFSxqzpmeIf-8b1x-kdz53sTcape2e4zTfurBtYjqqnET3j3UEEVWXtrKHBJHSjE6Jh9nHTjymO_owWtAWYgBTGjiMdLDsHqnYWGF5EMRwBVMGBM4QgdaT5tSgj4TMYAfFBQaOOVZf5CQ7RG1_KZyKkSPBk-ex--kZagyohb11d28wB8CB5tPfQ25VsSKMWnDwADjKwiuVev7V-17oGlSUAmEZ2cVa4e8Xc-v3pGc3VuGZc_6lxMXBuKt384JS-yFU9YQ1k"/>
-<!-- Top App Bar Overlay -->
-<div class="absolute top-0 left-0 w-full z-20 flex items-center justify-between p-4">
-<button class="flex size-10 items-center justify-center rounded-full bg-white/80 dark:bg-black/40 backdrop-blur-sm shadow-sm hover:bg-white dark:hover:bg-black/60 transition-colors">
-<span class="material-symbols-outlined text-text-main dark:text-white" style="font-size: 24px;">arrow_back</span>
-</button>
-</div>
-</div>
-<!-- Main Content -->
-<div class="flex-1 flex flex-col px-6 -mt-6 relative z-20">
-<!-- Header Text -->
-<div class="bg-surface-light dark:bg-surface-dark pt-6 pb-2 rounded-t-3xl">
-<h1 class="text-3xl font-bold tracking-tight text-text-main dark:text-white mb-2">Crear Cuenta</h1>
-<p class="text-text-muted dark:text-gray-400 text-base font-normal">Únete para reservar tus pistas de pádel en segundos.</p>
-</div>
-<!-- Form -->
-<form class="flex flex-col gap-5 py-6">
-<!-- Name Field -->
-<div class="space-y-1.5">
-<label class="block text-sm font-medium text-text-main dark:text-gray-200" for="name">Nombre completo</label>
-<div class="relative">
-<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-<span class="material-symbols-outlined text-text-muted" style="font-size: 20px;">person</span>
-</div>
-<input class="block w-full rounded-xl border-gray-200 bg-background-light dark:bg-background-dark/50 dark:border-gray-700 dark:text-white pl-10 pr-3 py-3.5 text-base focus:border-primary focus:ring-primary focus:ring-1 transition-all placeholder:text-text-muted/60" id="name" name="name" placeholder="Ej. María García" type="text"/>
-</div>
-</div>
-<!-- Email Field -->
-<div class="space-y-1.5">
-<label class="block text-sm font-medium text-text-main dark:text-gray-200" for="email">Correo electrónico</label>
-<div class="relative">
-<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-<span class="material-symbols-outlined text-text-muted" style="font-size: 20px;">mail</span>
-</div>
-<input class="block w-full rounded-xl border-gray-200 bg-background-light dark:bg-background-dark/50 dark:border-gray-700 dark:text-white pl-10 pr-3 py-3.5 text-base focus:border-primary focus:ring-primary focus:ring-1 transition-all placeholder:text-text-muted/60" id="email" name="email" placeholder="nombre@ejemplo.com" type="email"/>
-</div>
-</div>
-<!-- Password Field -->
-<div class="space-y-1.5">
-<label class="block text-sm font-medium text-text-main dark:text-gray-200" for="password">Contraseña</label>
-<div class="relative">
-<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-<span class="material-symbols-outlined text-text-muted" style="font-size: 20px;">lock</span>
-</div>
-<input class="block w-full rounded-xl border-gray-200 bg-background-light dark:bg-background-dark/50 dark:border-gray-700 dark:text-white pl-10 pr-10 py-3.5 text-base focus:border-primary focus:ring-primary focus:ring-1 transition-all placeholder:text-text-muted/60" id="password" name="password" placeholder="••••••••" type="password"/>
-<div class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer hover:text-text-main text-text-muted">
-<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
-</div>
-</div>
-</div>
-<!-- Confirm Password Field -->
-<div class="space-y-1.5">
-<label class="block text-sm font-medium text-text-main dark:text-gray-200" for="confirm_password">Confirmar contraseña</label>
-<div class="relative">
-<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-<span class="material-symbols-outlined text-text-muted" style="font-size: 20px;">lock_reset</span>
-</div>
-<input class="block w-full rounded-xl border-gray-200 bg-background-light dark:bg-background-dark/50 dark:border-gray-700 dark:text-white pl-10 pr-10 py-3.5 text-base focus:border-primary focus:ring-primary focus:ring-1 transition-all placeholder:text-text-muted/60" id="confirm_password" name="confirm_password" placeholder="••••••••" type="password"/>
-</div>
-</div>
-<!-- Terms Checkbox -->
-<div class="flex items-start gap-3 mt-2">
-<div class="flex h-6 items-center">
-<input class="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary dark:border-gray-600 dark:bg-background-dark" id="terms" name="terms" type="checkbox"/>
-</div>
-<div class="text-sm leading-6">
-<label class="font-normal text-text-muted dark:text-gray-400" for="terms">Acepto los <a class="font-semibold text-text-main dark:text-primary hover:underline" href="#">Términos y Condiciones</a> y la <a class="font-semibold text-text-main dark:text-primary hover:underline" href="#">Política de Privacidad</a>.</label>
-</div>
-</div>
-<!-- Submit Button -->
-<button class="mt-4 flex w-full items-center justify-center rounded-xl bg-primary px-4 py-4 text-base font-bold text-[#102219] shadow-lg shadow-primary/20 transition-all hover:shadow-primary/40 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark" type="button">
-                    Registrarse
-                </button>
-</form>
-<!-- Footer Link -->
-<div class="mt-auto pb-8 text-center">
-<p class="text-sm text-text-muted dark:text-gray-400">
-                    ¿Ya tienes una cuenta? 
-                    <a class="font-bold text-text-main dark:text-primary hover:underline" href="#">Iniciar sesión</a>
-</p>
-</div>
-</div>
-</div>
-</body></html>
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-text-main dark:text-white">
+  <div class="relative flex min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-surface-light dark:bg-surface-dark sm:my-8 sm:rounded-2xl">
+    <div class="relative h-48 w-full overflow-hidden rounded-b-3xl">
+      <div class="absolute inset-0 bg-gradient-to-b from-primary/30 to-surface-light dark:to-surface-dark z-10"></div>
+      <img alt="Close up of a padel racket and ball on a blue court" class="h-full w-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc4y0hBFSxqzpmeIf-8b1x-kdz53sTcape2e4zTfurBtYjqqnET3j3UEEVWXtrKHBJHSjE6Jh9nHTjymO_owWtAWYgBTGjiMdLDsHqnYWGF5EMRwBVMGBM4QgdaT5tSgj4TMYAfFBQaOOVZf5CQ7RG1_KZyKkSPBk-ex--kZagyohb11d28wB8CB5tPfQ25VsSKMWnDwADjKwiuVev7V-17oGlSUAmEZ2cVa4e8Xc-v3pGc3VuGZc_6lxMXBuKt384JS-yFU9YQ1k" />
+    </div>
+    <div class="flex-1 flex flex-col px-6 -mt-6 relative z-20">
+      <div class="bg-surface-light dark:bg-surface-dark pt-6 pb-2 rounded-t-3xl">
+        <h1 class="text-3xl font-bold tracking-tight text-text-main dark:text-white mb-2">Crear Cuenta</h1>
+        <p class="text-text-muted dark:text-gray-400 text-base font-normal">Únete para reservar tus pistas de pádel en segundos.</p>
+      </div>
+      <form id="register-form" class="flex flex-col gap-5 py-6">
+        <div class="space-y-1.5">
+          <label class="block text-sm font-medium text-text-main dark:text-gray-200" for="name">Nombre completo</label>
+          <input class="block w-full rounded-xl border-gray-200 bg-background-light dark:bg-background-dark/50 pl-10 pr-3 py-3.5 text-base" id="name" name="name" placeholder="Ej. María García" type="text" />
+        </div>
+        <div class="space-y-1.5">
+          <label class="block text-sm font-medium text-text-main dark:text-gray-200" for="email">Correo electrónico</label>
+          <input class="block w-full rounded-xl border-gray-200 bg-background-light dark:bg-background-dark/50 pl-10 pr-3 py-3.5 text-base" id="email" name="email" placeholder="nombre@ejemplo.com" type="email" />
+        </div>
+        <div class="space-y-1.5">
+          <label class="block text-sm font-medium text-text-main dark:text-gray-200" for="password">Contraseña</label>
+          <input class="block w-full rounded-xl border-gray-200 bg-background-light dark:bg-background-dark/50 pl-10 pr-10 py-3.5 text-base" id="password" name="password" placeholder="••••••••" type="password" />
+        </div>
+        <div class="space-y-1.5">
+          <label class="block text-sm font-medium text-text-main dark:text-gray-200" for="confirm_password">Confirmar contraseña</label>
+          <input class="block w-full rounded-xl border-gray-200 bg-background-light dark:bg-background-dark/50 pl-10 pr-10 py-3.5 text-base" id="confirm_password" name="confirm_password" placeholder="••••••••" type="password" />
+        </div>
+        <button id="register-button" class="mt-4 flex w-full items-center justify-center rounded-xl bg-primary px-4 py-4 text-base font-bold text-[#102219]" type="submit">
+          Registrarse
+        </button>
+      </form>
+      <div id="error-message" class="hidden text-red-500 text-center mb-4"></div>
+      <div class="mt-auto pb-8 text-center">
+        <p class="text-sm text-text-muted dark:text-gray-400">
+          ¿Ya tienes una cuenta?
+          <a class="font-bold text-text-main dark:text-primary hover:underline" href="/inicio_de_sesion/code.html">Iniciar sesión</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('register-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm_password').value;
+      const errorMessage = document.getElementById('error-message');
+
+      if (password !== confirmPassword) {
+        errorMessage.textContent = 'Las contraseñas no coinciden.';
+        errorMessage.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, email, password }),
+        });
+
+        if (response.ok) {
+          window.location.href = '/inicio_de_sesion/code.html';
+        } else {
+          const data = await response.json();
+          errorMessage.textContent = data.error || 'Error al registrar el usuario.';
+          errorMessage.classList.remove('hidden');
+        }
+      } catch (error) {
+        errorMessage.textContent = 'Error de conexión. Inténtalo de nuevo.';
+        errorMessage.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

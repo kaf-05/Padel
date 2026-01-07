@@ -179,6 +179,15 @@ app.delete('/api/courts/:id', authenticateToken, authorizeAdmin, async (req, res
 });
 
 // Reservation management
+app.get('/api/schedule', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT court_id, start_time FROM reservations');
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.get('/api/reservations', authenticateToken, authorizeAdmin, async (req, res) => {
   try {
     const [rows] = await db.query('SELECT * FROM reservations');
@@ -190,7 +199,10 @@ app.get('/api/reservations', authenticateToken, authorizeAdmin, async (req, res)
 
 app.get('/api/my-reservations', authenticateToken, async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM reservations WHERE user_id = ?', [req.user.id]);
+    const [rows] = await db.query(
+      'SELECT r.id, r.start_time, r.end_time, c.name as court_name FROM reservations r JOIN courts c ON r.court_id = c.id WHERE r.user_id = ?',
+      [req.user.id]
+    );
     res.json(rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -229,10 +241,10 @@ app.delete('/api/reservations/:id', authenticateToken, async (req, res) => {
 
 const createDefaultAdmin = async () => {
   try {
-    const [rows] = await db.query('SELECT * FROM users WHERE email = ?', ['admin']);
+    const [rows] = await db.query('SELECT * FROM users WHERE email = ?', ['admin@example.com']);
     if (rows.length === 0) {
       const hashedPassword = await bcrypt.hash('admin', saltRounds);
-      await db.query('INSERT INTO users (name, email, password, role, must_change_password) VALUES (?, ?, ?, ?, ?)', ['admin', 'admin', hashedPassword, 'admin', true]);
+      await db.query('INSERT INTO users (name, email, password, role, must_change_password) VALUES (?, ?, ?, ?, ?)', ['admin', 'admin@example.com', hashedPassword, 'admin', true]);
       console.log('Default admin user created.');
     }
   } catch (err) {
