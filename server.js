@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const db = require('./db');
+const fs = require('fs').promises;
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -239,6 +240,20 @@ app.delete('/api/reservations/:id', authenticateToken, async (req, res) => {
 
 // --- SERVER INITIALIZATION ---
 
+const initializeDatabase = async () => {
+  try {
+    const schema = await fs.readFile(path.join(__dirname, 'schema.sql'), 'utf-8');
+    const queries = schema.split(';').filter(query => query.trim());
+    for (const query of queries) {
+      await db.query(query);
+    }
+    console.log('Database schema initialized successfully.');
+  } catch (err) {
+    console.error('Error initializing database schema:', err);
+    process.exit(1);
+  }
+};
+
 const createDefaultAdmin = async () => {
   try {
     const [rows] = await db.query('SELECT * FROM users WHERE email = ?', ['admin@example.com']);
@@ -253,6 +268,7 @@ const createDefaultAdmin = async () => {
 };
 
 app.listen(port, async () => {
+  await initializeDatabase();
   await createDefaultAdmin();
   console.log(`Server is running on http://localhost:${port}`);
 });
