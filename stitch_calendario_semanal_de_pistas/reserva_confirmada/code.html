@@ -112,17 +112,27 @@
 <div class="absolute bottom-0 left-0 w-full bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-t border-gray-100 dark:border-gray-800 z-20 pb-8 pt-4 px-4">
 <div class="flex flex-col gap-3 w-full max-w-[480px] mx-auto">
 <!-- Primary Button -->
-<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary hover:bg-[#0fd671] text-[#102219] transition-all active:scale-[0.98] shadow-[0_4px_14px_0_rgba(19,236,128,0.39)]">
-<span class="text-lg font-bold leading-normal tracking-[0.015em] flex items-center gap-2">
-                        Ver Mis Reservas
-                        <span class="material-symbols-outlined text-xl">arrow_forward</span>
-</span>
+<button id="my-reservations-btn" class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary hover:bg-[#0fd671] text-[#102219] transition-all active:scale-[0.98] shadow-[0_4px_14px_0_rgba(19,236,128,0.39)]">
+  <span class="text-lg font-bold leading-normal tracking-[0.015em] flex items-center gap-2">
+    Ver Mis Reservas
+    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+  </span>
 </button>
 <!-- Secondary Button -->
-<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-transparent border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-text-main dark:text-gray-300 transition-all active:scale-[0.98]">
-<span class="text-base font-bold leading-normal tracking-[0.015em]">Volver al Calendario</span>
+<button id="calendar-btn" class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-transparent border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-text-main dark:text-gray-300 transition-all active:scale-[0.98]">
+  <span class="text-base font-bold leading-normal tracking-[0.015em]">Volver al Calendario</span>
 </button>
 </div>
 </div>
 </div>
-</body></html>
+<script src="/assets/js/main.js"></script>
+<script>
+  document.getElementById('my-reservations-btn').addEventListener('click', () => {
+    window.location.href = '/mis_reservas/code.html';
+  });
+  document.getElementById('calendar-btn').addEventListener('click', () => {
+    window.location.href = '/calendario_semanal_de_pistas_2/code.html';
+  });
+</script>
+</body>
+</html>
