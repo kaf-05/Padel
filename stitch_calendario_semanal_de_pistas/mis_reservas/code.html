@@ -25,34 +25,15 @@
 </head>
 <body class="bg-background-light dark:bg-background-dark">
     <div class="max-w-md mx-auto">
-        <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b">
-            <h2 class="text-lg font-bold text-center py-3">Mis Reservas</h2>
-        </header>
         <main id="reservations-container" class="w-full flex flex-col gap-4 px-4 pt-4">
             <!-- Las reservas se cargarán aquí dinámicamente -->
         </main>
-        <nav class="fixed bottom-0 w-full max-w-md mx-auto bg-white border-t pb-safe">
-             <div class="flex items-center justify-around h-16">
-                <a href="/" class="flex flex-col items-center gap-1 w-full text-gray-400">
-                    <span class="material-symbols-outlined text-2xl">calendar_month</span>
-                    <span class="text-xs font-medium">Calendario</span>
-                </a>
-                <a href="/mis_reservas/code.html" class="flex flex-col items-center gap-1 w-full text-primary">
-                    <span class="material-symbols-outlined text-2xl">receipt_long</span>
-                    <span class="text-xs font-bold">Reservas</span>
-                </a>
-                <a href="#" id="logout-button" class="flex flex-col items-center gap-1 w-full text-gray-400">
-                     <span class="material-symbols-outlined text-2xl">logout</span>
-                     <span class="text-xs font-medium">Salir</span>
-                </a>
-            </div>
-        </nav>
     </div>
 
+    <script src="../assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const reservationsContainer = document.getElementById('reservations-container');
-            const logoutButton = document.getElementById('logout-button');
 
             async function loadReservations() {
                 try {
@@ -87,10 +68,16 @@
                     const startTime = new Date(res.start_time);
                     const endTime = new Date(res.end_time);
 
+                    const formatTime = (date) => {
+                        const hours = String(date.getUTCHours()).padStart(2, '0');
+                        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+                        return `${hours}:${minutes}`;
+                    };
+
                     reservationCard.innerHTML = `
                         <div>
                             <p class="font-bold">${res.court_name}</p>
-                            <p class="text-sm text-gray-600">${startTime.toLocaleDateString()} de ${startTime.toLocaleTimeString()} a ${endTime.toLocaleTimeString()}</p>
+                            <p class="text-sm text-gray-600">${startTime.toLocaleDateString()} de ${formatTime(startTime)} a ${formatTime(endTime)}</p>
                         </div>
                         <button data-id="${res.id}" class="cancel-button text-red-500 font-bold border border-red-500 rounded py-2">Cancelar</button>
                     `;
@@ -116,15 +103,6 @@
                     } catch (error) {
                         alert(error.message);
                     }
-                }
-            });
-
-             logoutButton.addEventListener('click', async () => {
-                try {
-                    await fetch('/api/logout', { method: 'POST' });
-                    window.location.href = '/inicio_de_sesion/code.html';
-                } catch (error) {
-                    alert('Error al cerrar sesión.');
                 }
             });
 
