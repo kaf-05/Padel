@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const db = require('./db');
@@ -32,12 +32,12 @@ app.get('/', (req, res) => {
 const authenticateToken = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
-    return res.status(401).json({ error: 'Access denied' });
+    return res.status(401).json({ error: 'Acceso denegado' });
   }
 
   jwt.verify(token, jwtSecret, (err, user) => {
     if (err) {
-      return res.status(403).json({ error: 'Invalid token' });
+      return res.status(403).json({ error: 'Token inválido' });
     }
     req.user = user;
     next();
@@ -46,7 +46,7 @@ const authenticateToken = (req, res, next) => {
 
 const authorizeAdmin = (req, res, next) => {
   if (req.user.role !== 'admin') {
-    return res.status(403).json({ error: 'Admin access required' });
+    return res.status(403).json({ error: 'Se requiere acceso de administrador' });
   }
   next();
 };
@@ -56,13 +56,21 @@ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     const [rows] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
     if (rows.length === 0) {
-      return res.status(400).json({ error: 'Invalid credentials' });
+      return res.status(400).json({ error: 'Credenciales inválidas' });
     }
 
     const user = rows[0];
-    const isMatch = await bcrypt.compare(password, user.password);
+    let isMatch;
+    try {
+      isMatch = await bcrypt.compare(password, user.password);
+    } catch (compareError) {
+      return res.status(500).json({
+        error: 'Error del servidor durante la comparación de contraseñas.'
+      });
+    }
+
     if (!isMatch) {
-      return res.status(400).json({ error: 'Invalid credentials' });
+      return res.status(400).json({ error: 'Credenciales inválidas' });
     }
 
     const token = jwt.sign({ id: user.id, name: user.name, email: user.email, role: user.role }, jwtSecret, { expiresIn: '1h' });
@@ -75,7 +83,7 @@ app.post('/api/login', async (req, res) => {
 
 app.post('/api/logout', (req, res) => {
   res.clearCookie('token');
-  res.json({ message: 'Logged out successfully' });
+  res.json({ message: 'Sesión cerrada correctamente' });
 });
 
 // --- API ENDPOINTS ---
@@ -100,13 +108,13 @@ app.post('/api/users/change-password', authenticateToken, async (req, res) => {
 
     const isMatch = await bcrypt.compare(oldPassword, user.password);
     if (!isMatch) {
-      return res.status(400).json({ error: 'Invalid old password' });
+      return res.status(400).json({ error: 'La contraseña antigua no es correcta' });
     }
 
     const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
     await db.query('UPDATE users SET password = ?, must_change_password = FALSE WHERE id = ?', [hashedNewPassword, req.user.id]);
 
-    res.json({ message: 'Password changed successfully' });
+    res.json({ message: 'Contraseña cambiada correctamente' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -125,7 +133,7 @@ app.put('/api/users/:id', authenticateToken, authorizeAdmin, async (req, res) =>
   try {
     const { name, email, role } = req.body;
     await db.query('UPDATE users SET name = ?, email = ?, role = ? WHERE id = ?', [name, email, role, req.params.id]);
-    res.json({ message: 'User updated successfully' });
+    res.json({ message: 'Usuario actualizado correctamente' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -134,7 +142,7 @@ app.put('/api/users/:id', authenticateToken, authorizeAdmin, async (req, res) =>
 app.delete('/api/users/:id', authenticateToken, authorizeAdmin, async (req, res) => {
   try {
     await db.query('DELETE FROM users WHERE id = ?', [req.params.id]);
-    res.json({ message: 'User deleted successfully' });
+    res.json({ message: 'Usuario eliminado correctamente' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -164,7 +172,7 @@ app.put('/api/courts/:id', authenticateToken, authorizeAdmin, async (req, res) =
   try {
     const { name, type } = req.body;
     await db.query('UPDATE courts SET name = ?, type = ? WHERE id = ?', [name, type, req.params.id]);
-    res.json({ message: 'Court updated successfully' });
+    res.json({ message: 'Pista actualizada correctamente' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -173,7 +181,7 @@ app.put('/api/courts/:id', authenticateToken, authorizeAdmin, async (req, res) =
 app.delete('/api/courts/:id', authenticateToken, authorizeAdmin, async (req, res) => {
   try {
     await db.query('DELETE FROM courts WHERE id = ?', [req.params.id]);
-    res.json({ message: 'Court deleted successfully' });
+    res.json({ message: 'Pista eliminada correctamente' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -212,9 +220,16 @@ app.get('/api/my-reservations', authenticateToken, async (req, res) => {
 
 app.post('/api/reservations', authenticateToken, async (req, res) => {
   try {
-    const { court_id, start_time, end_time } = req.body;
-    const [result] = await db.query('INSERT INTO reservations (user_id, court_id, start_time, end_time) VALUES (?, ?, ?, ?)', [req.user.id, court_id, start_time, end_time]);
-    res.status(201).json({ id: result.insertId, user_id: req.user.id, court_id, start_time, end_time });
+    const { court_id, date, slot } = req.body;
+
+    // Construct the start time from the date and slot
+    const startTime = new Date(`${date}T${slot}:00Z`);
+
+    // Calculate the end time (90 minutes later)
+    const endTime = new Date(startTime.getTime() + 90 * 60 * 1000);
+
+    const [result] = await db.query('INSERT INTO reservations (user_id, court_id, start_time, end_time) VALUES (?, ?, ?, ?)', [req.user.id, court_id, startTime, endTime]);
+    res.status(201).json({ id: result.insertId, user_id: req.user.id, court_id, start_time: startTime, end_time: endTime });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -224,14 +239,14 @@ app.delete('/api/reservations/:id', authenticateToken, async (req, res) => {
   try {
     const [rows] = await db.query('SELECT * FROM reservations WHERE id = ?', [req.params.id]);
     if (rows.length === 0) {
-      return res.status(404).json({ error: 'Reservation not found' });
+      return res.status(404).json({ error: 'Reserva no encontrada' });
     }
     const reservation = rows[0];
     if (reservation.user_id !== req.user.id && req.user.role !== 'admin') {
-      return res.status(403).json({ error: 'Access denied' });
+      return res.status(403).json({ error: 'Acceso denegado' });
     }
     await db.query('DELETE FROM reservations WHERE id = ?', [req.params.id]);
-    res.json({ message: 'Reservation deleted successfully' });
+    res.json({ message: 'Reserva eliminada correctamente' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

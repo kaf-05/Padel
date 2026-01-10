@@ -25,9 +25,6 @@
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display">
     <div class="relative flex flex-col h-screen w-full max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden">
-        <header class="flex-none bg-surface-light dark:bg-surface-dark px-4 py-3 flex items-center justify-between border-b border-gray-100 dark:border-gray-800 z-20">
-            <h1 class="text-lg font-bold">Calendario Pistas</h1>
-        </header>
         <main class="flex-1 overflow-y-auto overflow-x-hidden pb-24">
             <div class="px-4 mt-4">
                 <h3 class="text-xl font-bold">Horarios Disponibles</h3>
@@ -36,26 +33,12 @@
                 </div>
             </div>
         </main>
-        <nav class="flex-none bg-surface-light dark:bg-surface-dark border-t border-gray-100 px-6 py-3 flex justify-between items-center z-30">
-            <a href="/" class="flex flex-col items-center gap-1 text-primary w-16">
-                <span class="material-symbols-outlined text-2xl">calendar_month</span>
-                <span class="text-xs font-bold">Calendario</span>
-            </a>
-            <a href="/mis_reservas/code.html" class="flex flex-col items-center gap-1 text-gray-400 w-16">
-                <span class="material-symbols-outlined text-2xl">receipt_long</span>
-                <span class="text-xs font-medium">Reservas</span>
-            </a>
-            <a href="#" id="logout-button" class="flex flex-col items-center gap-1 text-gray-400 w-16">
-                <span class="material-symbols-outlined text-2xl">logout</span>
-                <span class="text-xs font-medium">Salir</span>
-            </a>
-        </nav>
     </div>
 
+    <script src="../assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const timeSlotsContainer = document.getElementById('time-slots-container');
-            const logoutButton = document.getElementById('logout-button');
 
             async function loadSchedule() {
                 try {
@@ -113,9 +96,11 @@
                 if (event.target.classList.contains('reserve-button')) {
                     const button = event.target;
                     const courtId = button.dataset.courtId;
-                    const startTime = button.dataset.startTime;
+                    const startTime = button.dataset.startTime; // This is now just for identification
 
-                    const endTime = new Date(new Date(startTime).getTime() + 90 * 60000).toISOString();
+                    const today = new Date().toISOString().slice(0, 10);
+                    const slot = new Date(startTime).getUTCHours() + ':' + ('0' + new Date(startTime).getUTCMinutes()).slice(-2);
+
 
                     try {
                         const response = await fetch('/api/reservations', {
@@ -123,8 +108,8 @@
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
                                 court_id: parseInt(courtId),
-                                start_time: startTime,
-                                end_time: endTime
+                                date: today,
+                                slot: slot
                             })
                         });
 
@@ -143,15 +128,6 @@
                     } catch (error) {
                         alert('Error de conexión al intentar reservar.');
                     }
-                }
-            });
-
-            logoutButton.addEventListener('click', async () => {
-                try {
-                    await fetch('/api/logout', { method: 'POST' });
-                    window.location.href = '/inicio_de_sesion/code.html';
-                } catch (error) {
-                    alert('Error al cerrar sesión.');
                 }
             });
 
