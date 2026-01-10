@@ -22,9 +22,9 @@ app.use(cookieParser());
 // Serve static files from the 'stitch_calendario_semanal_de_pistas' directory
 app.use(express.static(path.join(__dirname, 'stitch_calendario_semanal_de_pistas')));
 
-// Redirect the root URL to the weekly calendar
+// Serve the main page on the root URL
 app.get('/', (req, res) => {
-  res.redirect('/calendario_semanal_de_pistas_1/code.html');
+  res.sendFile(path.join(__dirname, 'stitch_calendario_semanal_de_pistas', 'calendario_semanal_de_pistas_1', 'code.html'));
 });
 
 // --- AUTHENTICATION & AUTHORIZATION ---
