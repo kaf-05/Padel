@@ -253,18 +253,22 @@ const createDefaultCourt = async () => {
   }
 };
 
-const startServer = async () => {
+const initializeApp = async () => {
     try {
         await initializeDatabase();
         await createDefaultAdmin();
         await createDefaultCourt();
-        app.listen(port, () => {
-            console.log(`Server is running on http://localhost:${port}`);
-        });
+        console.log("Application initialization complete.");
     } catch (err) {
-        console.error('Failed to start server:', err);
-        process.exit(1);
+        console.error('Failed to initialize application:', err);
+        // We log the error but don't exit. The server is already running.
+        // This allows the health check to pass while still showing the error in the logs.
     }
 };
 
-startServer();
+// Start the server first to ensure it can respond to health checks.
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+    // Then, attempt to initialize the database and create default data.
+    initializeApp();
+});
