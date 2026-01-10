@@ -50,94 +50,134 @@
 <!-- Main Content Scroll Area -->
 <main class="flex-1 overflow-y-auto px-6 py-4 relative z-10 scrollbar-hide">
 <!-- Summary Card -->
-<div class="bg-white dark:bg-card-dark rounded-xl shadow-lg border border-gray-100 dark:border-white/5 overflow-hidden mb-6">
-<!-- Court Image Header -->
-<div class="h-40 relative w-full bg-gray-200">
-<img alt="Sunny outdoor padel court with glass walls" class="w-full h-full object-cover" data-alt="Sunny outdoor padel court with glass walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCHJe8Isn5UZB0o5CLem6QI12FkjHOhY1IA1McZ4tUYmzLHFuje6gg1zu51T9zKAv75hYcMLJJLdMzivwEYSc4yxCv_w6hQWmA0L2-43De98V9X4qxbfsKM13ZEmNwpLRh8YGouzWFba035XPPI88ZRPhieatjuTZ8PO-XXjDcsbxNXrXhI8pD3K_dq1hB1IwKdQzNhSW-lAk7S9ZQYAl6M26WtR5KILmqPIATHtrUp8QzTxWIKNGHYN0O8bM9x-bCSOmsleu4GN0"/>
-<div class="absolute top-4 right-4 bg-primary text-black text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                        DISPONIBLE
-                    </div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-4 left-4 text-white">
-<p class="text-xs font-medium opacity-90 uppercase tracking-wider">Pista Exterior</p>
-<h2 class="text-2xl font-bold">Pista Central</h2>
-</div>
-</div>
-<!-- Booking Details List -->
-<div class="p-6 space-y-6">
-<!-- Date & Time Row -->
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/20 dark:bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary-dark dark:text-primary">
-<span class="material-icons text-xl">calendar_today</span>
-</div>
-<div class="flex-1">
-<p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Fecha y Hora</p>
-<p class="text-lg font-semibold text-gray-900 dark:text-white mt-0.5">Jueves, 24 Oct</p>
-<div class="flex items-center gap-2 mt-1">
-<span class="text-base text-gray-700 dark:text-gray-300">17:00 - 18:30</span>
-<span class="bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 text-xs px-2 py-0.5 rounded font-medium">90 min</span>
-</div>
-</div>
-</div>
-<!-- Location Row -->
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/20 dark:bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary-dark dark:text-primary">
-<span class="material-icons text-xl">location_on</span>
-</div>
-<div class="flex-1">
-<p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Ubicación</p>
-<p class="text-base font-semibold text-gray-900 dark:text-white mt-0.5">Club de Pádel El Olivo</p>
-<p class="text-sm text-gray-500 dark:text-gray-400">Pista 1 (Muro)</p>
-</div>
-</div>
-<!-- User Row -->
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/20 dark:bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary-dark dark:text-primary">
-<span class="material-icons text-xl">person</span>
-</div>
-<div class="flex-1">
-<p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Reservado para</p>
-<div class="flex items-center mt-1">
-<img alt="Avatar of user Alex Morgan" class="h-6 w-6 rounded-full mr-2" data-alt="Avatar of user Alex Morgan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8WsnhhVIxQR_upnbZKnpDRudlrCm-9zB7W2JU4ftTZjbQIsFmFkBVKBn6wysUJlXxhFBZBmBlt6Ge1q_RSP_kyjPmVTYLRDGqTwnKPWVLzIek4xUqu7jNHSNxd407S_6T9QlC40DvnRVmFcWRha7lc7guvUegnQaQUNY7rPWQ6LbWkcf6qog_sF341fLWA-nWL_v7CMITQKgitR8iR8yLahZvvPGpajfwQFFvmMbPU1S9VlwxmjX-mU3A5ZQp0hXrO7IF_4qCCaY"/>
-<span class="text-base font-medium text-gray-900 dark:text-white">Alex Morgan</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Price Divider -->
-<div class="h-px bg-gray-100 dark:bg-white/5 mx-6"></div>
-<!-- Total Cost -->
-<div class="p-6 flex items-center justify-between">
-<div>
-<p class="text-sm text-gray-500 dark:text-gray-400">Precio total</p>
-<p class="text-xs text-primary dark:text-primary/80 font-medium mt-0.5">Socio Registrado</p>
-</div>
-<div class="text-right">
-<span class="text-3xl font-bold text-primary">GRATIS</span>
-</div>
-</div>
+<div id="reservation-details" class="bg-white dark:bg-card-dark rounded-xl shadow-lg border border-gray-100 dark:border-white/5 overflow-hidden mb-6">
+  <!-- Dynamic content will be injected here -->
 </div>
 <!-- Additional Info / Policy -->
 <div class="px-2 mb-8">
-<div class="flex gap-3">
-<span class="material-icons text-gray-400 text-sm mt-0.5">info</span>
-<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                        La reserva se confirmará automáticamente. Puedes cancelar sin penalización hasta 2 horas antes del inicio del partido.
-                    </p>
+  <div class="flex gap-3">
+    <span class="material-icons text-gray-400 text-sm mt-0.5">info</span>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+      La reserva se confirmará automáticamente. Puedes cancelar sin penalización hasta 2 horas antes del inicio del partido.
+    </p>
+  </div>
 </div>
-</div>
+<div id="error-message" class="px-2 mb-8 text-red-500"></div>
 </main>
 <!-- Bottom Actions (Fixed Area) -->
 <div class="bg-white dark:bg-card-dark border-t border-gray-100 dark:border-white/5 px-6 py-6 pb-8 z-20 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
-<div class="flex flex-col gap-3">
-<button class="w-full bg-primary hover:bg-[#0fdc75] active:scale-[0.98] transition-all duration-200 text-black font-bold text-lg py-4 rounded-xl shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
-<span>Confirmar Reserva</span>
-<span class="material-icons text-xl">check_circle</span>
-</button>
-<button class="w-full bg-transparent hover:bg-gray-50 dark:hover:bg-white/5 active:scale-[0.98] transition-all duration-200 text-gray-500 dark:text-gray-400 font-medium text-base py-3 rounded-xl border border-transparent">
-                    Cancelar
-                </button>
+  <div class="flex flex-col gap-3">
+    <button id="confirm-button" class="w-full bg-primary hover:bg-[#0fdc75] active:scale-[0.98] transition-all duration-200 text-black font-bold text-lg py-4 rounded-xl shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
+      <span>Confirmar Reserva</span>
+      <span class="material-icons text-xl">check_circle</span>
+    </button>
+    <button id="cancel-button" class="w-full bg-transparent hover:bg-gray-50 dark:hover:bg-white/5 active:scale-[0.98] transition-all duration-200 text-gray-500 dark:text-gray-400 font-medium text-base py-3 rounded-xl border border-transparent">
+      Cancelar
+    </button>
+  </div>
 </div>
 </div>
-</div>
-</body></html>
+<script src="/assets/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const detailsContainer = document.getElementById('reservation-details');
+    const confirmButton = document.getElementById('confirm-button');
+    const cancelButton = document.getElementById('cancel-button');
+    const errorMessage = document.getElementById('error-message');
+
+    const params = new URLSearchParams(window.location.search);
+    const courtId = params.get('courtId');
+    const date = params.get('date');
+    const slot = params.get('slot');
+
+    if (!courtId || !date || !slot) {
+        detailsContainer.innerHTML = '<p class="text-red-500 p-6">Faltan detalles de la reserva.</p>';
+        confirmButton.disabled = true;
+        return;
+    }
+
+    async function fetchAndRenderDetails() {
+        try {
+            const courtsResponse = await fetch('/api/courts');
+            const courts = await courtsResponse.json();
+            const court = courts.find(c => c.id == courtId);
+
+            if (!court) {
+                throw new Error('Pista no encontrada');
+            }
+
+            const formattedDate = new Date(date).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const endTime = getEndTime(slot);
+
+            detailsContainer.innerHTML = `
+                <div class="h-40 relative w-full bg-gray-200">
+                    <img alt="Pista de pádel" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1554167128-408c1a2f3e83?q=80&w=2070&auto=format&fit=crop">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <p class="text-xs font-medium opacity-90 uppercase tracking-wider">${court.type}</p>
+                        <h2 class="text-2xl font-bold">${court.name}</h2>
+                    </div>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary"><span class="material-icons text-xl">calendar_today</span></div>
+                        <div>
+                            <p class="text-sm text-gray-500">Fecha y Hora</p>
+                            <p class="text-lg font-semibold">${formattedDate}</p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-base">${slot} - ${endTime}</span>
+                                <span class="bg-gray-100 text-xs px-2 py-0.5 rounded font-medium">90 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } catch (error) {
+            console.error('Error fetching details:', error);
+            detailsContainer.innerHTML = `<p class="text-red-500 p-6">Error al cargar los detalles: ${error.message}</p>`;
+            confirmButton.disabled = true;
+        }
+    }
+
+    function getEndTime(startTime) {
+        const [hours, minutes] = startTime.split(':').map(Number);
+        const dateObj = new Date();
+        dateObj.setHours(hours, minutes, 0, 0);
+        dateObj.setMinutes(dateObj.getMinutes() + 90);
+        return `${String(dateObj.getHours()).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`;
+    }
+
+    confirmButton.addEventListener('click', async () => {
+        try {
+            const response = await fetch('/api/reservations', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ court_id: courtId, date: date, slot: slot }),
+            });
+
+            if (response.status === 401) {
+                window.location.href = '/inicio_de_sesion/code.html';
+                return;
+            }
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'No se pudo crear la reserva.');
+            }
+
+            window.location.href = '/reserva_confirmada/code.html';
+
+        } catch (error) {
+            errorMessage.textContent = `Error: ${error.message}`;
+        }
+    });
+
+    cancelButton.addEventListener('click', () => {
+        window.location.href = '/calendario_semanal_de_pistas_2/code.html';
+    });
+
+    fetchAndRenderDetails();
+});
+</script>
+</body>
+</html>
