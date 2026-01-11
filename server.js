@@ -175,7 +175,10 @@ app.post('/api/reservations', authenticateToken, async (req, res) => {
     // We combine them to create a local time string.
     const localDateTimeString = `${date}T${slot}:00`;
     const startTime = new Date(localDateTimeString);
-
+	// 2. Restas las horas deseadas
+	const horasARestar = 1;
+	startTime.setHours(startTime.getHours() - horasARestar);
+	
     // Calculate the end time (90 minutes later)
     const endTime = new Date(startTime.getTime() + 90 * 60 * 1000);
 
