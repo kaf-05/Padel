@@ -41,7 +41,7 @@
                     if (!response.ok) {
                         if (response.status === 401 || response.status === 403) {
                             alert('Debes iniciar sesión para ver tus reservas.');
-                            window.location.href = '/inicio_de_sesion/code.html';
+                            window.location.href = '/login.html';
                         }
                         throw new Error('No se pudieron cargar las reservas.');
                     }

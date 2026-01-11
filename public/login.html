@@ -54,7 +54,7 @@
       <div id="error-message" class="hidden text-red-500 text-center mt-4"></div>
       <div class="mt-auto pt-8 flex justify-center items-center gap-1">
         <p class="text-sm">¿No tienes cuenta?</p>
-        <a class="text-primary hover:underline font-semibold text-sm" href="/registro_de_usuario/code.html">Regístrate</a>
+        <a class="text-primary hover:underline font-semibold text-sm" href="/register.html">Regístrate</a>
       </div>
     </div>
   </div>
@@ -80,7 +80,7 @@
 
         if (response.ok) {
           if (data.must_change_password) {
-            window.location.href = '/perfil_de_usuario/change_password.html';
+            window.location.href = '/change_password.html';
           } else {
             window.location.href = '/';
           }
