@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.status === 401) {
-                window.location.href = '/inicio_de_sesion/code.html';
+                window.location.href = '/login.html';
                 return;
             }
 
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(errorData.error || 'No se pudo crear la reserva.');
             }
 
-            window.location.href = '/reserva_confirmada/code.html';
+            window.location.href = '/confirmed.html';
 
         } catch (error) {
             errorMessage.textContent = `Error: ${error.message}`;
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     cancelButton.addEventListener('click', () => {
-        window.location.href = '/calendario_semanal_de_pistas_2/code.html';
+        window.location.href = '/index.html';
     });
 
     fetchAndRenderDetails();

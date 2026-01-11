@@ -15,12 +15,12 @@ const jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret';
 app.use(express.json());
 app.use(cookieParser());
 
-// Serve static files from the 'stitch_calendario_semanal_de_pistas' directory
-app.use(express.static(path.join(__dirname, 'stitch_calendario_semanal_de_pistas')));
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve the main page on the root URL
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'stitch_calendario_semanal_de_pistas', 'calendario_semanal_de_pistas_2', 'code.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // --- AUTHENTICATION & AUTHORIZATION ---
@@ -30,7 +30,7 @@ const authenticateToken = (req, res, next) => {
   if (!token) {
     // Redirect to login for HTML pages, return 401 for API calls
     if (req.accepts('html')) {
-        return res.redirect('/inicio_de_sesion/code.html');
+        return res.redirect('/login.html');
     }
     return res.status(401).json({ error: 'Acceso denegado' });
   }
@@ -38,7 +38,7 @@ const authenticateToken = (req, res, next) => {
   jwt.verify(token, jwtSecret, (err, user) => {
     if (err) {
       if (req.accepts('html')) {
-        return res.redirect('/inicio_de_sesion/code.html');
+        return res.redirect('/login.html');
       }
       return res.status(403).json({ error: 'Token inválido' });
     }

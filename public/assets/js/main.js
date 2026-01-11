@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function renderHeader(container, user) {
-  const homeUrl = user ? "/calendario_semanal_de_pistas_2/code.html" : "/inicio_de_sesion/code.html";
+  const homeUrl = user ? "/index.html" : "/login.html";
   let headerHTML = `
     <div class="bg-white dark:bg-gray-800 shadow-md p-4 flex justify-between items-center">
       <a href="${homeUrl}" class="text-2xl font-bold text-primary">Padel Booking</a>
@@ -28,16 +28,16 @@ function renderHeader(container, user) {
   if (user) {
     headerHTML += `
       <span class="text-gray-800 dark:text-white mr-4">Hola, ${user.name}</span>
-      <a href="/mis_reservas/code.html" class="text-primary hover:underline mr-4">Mis Reservas</a>
+      <a href="/reservations.html" class="text-primary hover:underline mr-4">Mis Reservas</a>
     `;
     if (user.role === 'admin') {
-      headerHTML += `<a href="/dashboard_de_administración/code.html" class="text-primary hover:underline mr-4">Admin Dashboard</a>`;
+      headerHTML += `<a href="/admin.html" class="text-primary hover:underline mr-4">Admin Dashboard</a>`;
     }
     headerHTML += `<a href="#" id="logout-btn" class="text-primary hover:underline">Salir</a>`;
   } else {
     headerHTML += `
-      <a href="/inicio_de_sesion/code.html" class="text-primary hover:underline">Iniciar Sesión</a>
-      <a href="/registro_de_usuario/code.html" class="ml-4 text-primary hover:underline">Registrarse</a>
+      <a href="/login.html" class="text-primary hover:underline">Iniciar Sesión</a>
+      <a href="/register.html" class="ml-4 text-primary hover:underline">Registrarse</a>
     `;
   }
 
@@ -54,7 +54,7 @@ function renderHeader(container, user) {
         await fetch('/api/logout', { method: 'POST' });
         // No es necesario eliminar la cookie manualmente desde el cliente,
         // el servidor ya se encarga de invalidarla.
-        window.location.href = '/inicio_de_sesion/code.html';
+        window.location.href = '/login.html';
       } catch (error) {
         console.error('Logout failed:', error);
       }
