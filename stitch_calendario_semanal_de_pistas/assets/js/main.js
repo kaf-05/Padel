@@ -1,25 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener('DOMContentLoaded', async () => {
   const headerContainer = document.createElement('header');
   document.body.prepend(headerContainer);
 
-  const token = getCookie('token');
   let user = null;
-  if (token) {
-    try {
-      user = JSON.parse(atob(token.split('.')[1]));
-    } catch (e) {
-      console.error('Error parsing token:', e);
+  try {
+    const response = await fetch('/api/me');
+    if (response.ok) {
+      const data = await response.json();
+      user = data.user;
     }
+  } catch (error) {
+    console.error('Error fetching user status:', error);
   }
 
   renderHeader(headerContainer, user);
 });
-
-function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
 
 function renderHeader(container, user) {
   const homeUrl = user ? "/calendario_semanal_de_pistas_2/code.html" : "/inicio_de_sesion/code.html";
@@ -56,7 +52,8 @@ function renderHeader(container, user) {
       e.preventDefault();
       try {
         await fetch('/api/logout', { method: 'POST' });
-        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        // No es necesario eliminar la cookie manualmente desde el cliente,
+        // el servidor ya se encarga de invalidarla.
         window.location.href = '/inicio_de_sesion/code.html';
       } catch (error) {
         console.error('Logout failed:', error);
