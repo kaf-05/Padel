@@ -41,21 +41,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function renderWeekGrid() {
         scheduleGrid.innerHTML = '<p>Cargando horarios...</p>';
-        const startOfWeek = getStartOfWeek(currentDate);
+        const startDate = new Date(currentDate);
+        startDate.setHours(0, 0, 0, 0);
 
-        monthYearElement.textContent = startOfWeek.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' });
-        const endOfWeek = new Date(startOfWeek);
-        endOfWeek.setDate(endOfWeek.getDate() + 6);
-        weekRangeElement.textContent = `${startOfWeek.getDate()} - ${endOfWeek.getDate()} de ${endOfWeek.toLocaleDateString('es-ES', { month: 'long' })}`;
+        monthYearElement.textContent = startDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' });
+        const endDate = new Date(startDate);
+        endDate.setDate(endDate.getDate() + 6);
+        weekRangeElement.textContent = `${startDate.getDate()} de ${startDate.toLocaleDateString('es-ES', { month: 'short' })} - ${endDate.getDate()} de ${endDate.toLocaleDateString('es-ES', { month: 'short' })}`;
+
+        // Disable prev-week button if we are at the current week
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        prevWeekButton.disabled = startDate.getTime() <= today.getTime();
+        prevWeekButton.classList.toggle('opacity-50', prevWeekButton.disabled);
+
 
         const timeSlots = generateTimeSlots();
         const days = Array.from({ length: 7 }, (_, i) => {
-            const day = new Date(startOfWeek);
+            const day = new Date(startDate);
             day.setDate(day.getDate() + i);
             return day;
         });
 
-        const schedule = await fetchScheduleForWeek(startOfWeek);
+        const schedule = await fetchScheduleForWeek(startDate);
 
         let table = '<table class="w-full border-collapse">';
         // Header
@@ -108,13 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function getStartOfWeek(date) {
-        const d = new Date(date);
-        const day = d.getDay();
-        const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-        return new Date(d.setDate(diff));
-    }
-
     function generateTimeSlots() {
         const slots = [];
         let hour = 9;
@@ -150,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     todayButton.addEventListener('click', () => {
         currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0);
         renderWeekGrid();
     });
 
