@@ -81,6 +81,10 @@ app.post('/api/logout', (req, res) => {
   res.json({ message: 'Sesión cerrada correctamente' });
 });
 
+app.get('/api/me', authenticateToken, (req, res) => {
+  res.json({ user: req.user });
+});
+
 // --- API ENDPOINTS ---
 
 // User management
