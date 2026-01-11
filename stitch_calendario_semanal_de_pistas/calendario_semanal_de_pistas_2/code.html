@@ -43,41 +43,23 @@
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-white overflow-hidden selection:bg-primary selection:text-black">
 <div class="relative flex flex-col h-screen w-full max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden">
-<main class="flex-1 overflow-y-auto overflow-x-hidden pb-24 scrollbar-hide pt-4">
+<header class="flex-none bg-surface-light dark:bg-surface-dark px-4 py-3 flex items-center justify-between border-b border-gray-100 dark:border-gray-800 z-20">
+    <button id="prev-week" class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <span class="material-symbols-outlined text-text-main dark:text-white">chevron_left</span>
+    </button>
+    <h1 id="month-year" class="text-lg font-bold leading-tight tracking-[-0.015em]"></h1>
+    <button id="next-week" class="p-2 -mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <span class="material-symbols-outlined text-text-main dark:text-white">chevron_right</span>
+    </button>
+</header>
+<main class="flex-1 overflow-y-auto overflow-x-hidden pb-24 scrollbar-hide">
 <div class="bg-surface-light dark:bg-surface-dark pb-4 rounded-b-2xl shadow-sm mb-4">
-<div class="flex items-center justify-between px-4 py-2">
-<p class="text-text-secondary text-sm font-medium">Semana 12 - 18</p>
-<button class="text-primary text-sm font-bold flex items-center gap-1">
-                        Hoy
-                    </button>
-</div>
-<div class="flex overflow-x-auto px-4 gap-3 py-2 scrollbar-hide snap-x">
-<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 opacity-60 snap-start">
-<span class="text-xs text-text-secondary font-medium">LUN</span>
-<span class="text-lg font-bold text-text-main dark:text-gray-400">12</span>
-</div>
-<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl bg-primary text-black shadow-lg shadow-primary/30 transform scale-105 snap-center ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-background-dark">
-<span class="text-xs font-bold opacity-80">MAR</span>
-<span class="text-lg font-extrabold">13</span>
-<div class="w-1 h-1 rounded-full bg-black mt-1"></div>
-</div>
-<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark snap-start cursor-pointer hover:border-primary transition-colors">
-<span class="text-xs text-text-secondary font-medium">MIE</span>
-<span class="text-lg font-bold text-text-main dark:text-white">14</span>
-</div>
-<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark snap-start cursor-pointer hover:border-primary transition-colors">
-<span class="text-xs text-text-secondary font-medium">JUE</span>
-<span class="text-lg font-bold text-text-main dark:text-white">15</span>
-</div>
-<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark snap-start cursor-pointer hover:border-primary transition-colors">
-<span class="text-xs text-text-secondary font-medium">VIE</span>
-<span class="text-lg font-bold text-text-main dark:text-white">16</span>
-</div>
-<div class="flex flex-col items-center justify-center min-w-[60px] h-[72px] rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark snap-start cursor-pointer hover:border-primary transition-colors">
-<span class="text-xs text-text-secondary font-medium">SAB</span>
-<span class="text-lg font-bold text-text-main dark:text-white">17</span>
-</div>
-</div>
+    <div class="flex items-center justify-end px-4 py-2">
+        <button id="today-btn" class="text-primary text-sm font-bold flex items-center gap-1">Hoy</button>
+    </div>
+    <div id="week-days" class="flex overflow-x-auto px-4 gap-3 py-2 scrollbar-hide snap-x">
+        <!-- Day items will be dynamically inserted here -->
+    </div>
 </div>
 <div class="px-4 mb-4">
 <div class="flex flex-col gap-3 rounded-xl border border-blue-100 bg-blue-50/50 dark:bg-blue-900/20 dark:border-blue-800 p-4">
@@ -102,117 +84,6 @@
 </main>
 </div>
 <script src="/assets/js/main.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const scheduleContainer = document.getElementById('schedule-container');
-    const today = new Date();
-    const currentDay = today.toISOString().split('T')[0];
-
-    async function fetchSchedule() {
-        try {
-            const courtsResponse = await fetch('/api/courts');
-            const courts = await courtsResponse.json();
-            const scheduleResponse = await fetch('/api/schedule');
-            const schedule = await scheduleResponse.json();
-
-            renderSchedule(courts, schedule);
-        } catch (error) {
-            console.error('Error fetching schedule:', error);
-            scheduleContainer.innerHTML = '<p class="text-red-500">Error al cargar los horarios.</p>';
-        }
-    }
-
-    function renderSchedule(courts, schedule) {
-        scheduleContainer.innerHTML = ''; // Clear existing content
-        const timeSlots = generateTimeSlots();
-        const court = courts[0]; // Assuming one court for simplicity
-
-        timeSlots.forEach(slot => {
-            const localDateTime = new Date(`${currentDay}T${slot}`);
-            const isBooked = schedule.some(booking =>
-                new Date(booking.start_time).getTime() === localDateTime.getTime() &&
-                booking.court_id === court.id
-            );
-
-            const slotElement = document.createElement('div');
-            slotElement.className = 'group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl transition-all';
-
-            if (isBooked) {
-                slotElement.classList.add('bg-gray-50', 'dark:bg-[#15201b]', 'border', 'border-gray-100', 'dark:border-gray-800', 'opacity-90');
-                slotElement.innerHTML = `
-                    <div class="flex items-center gap-4 opacity-60">
-                        <div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-500">
-                            <span class="material-symbols-outlined">block</span>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h4 class="text-lg font-bold text-gray-500 dark:text-gray-400 decoration-slice">${slot} - ${getEndTime(slot)}</h4>
-                                <span class="inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/20 px-2 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">Ocupado</span>
-                            </div>
-                            <p class="text-sm text-gray-400">${court.name} • ${court.type}</p>
-                        </div>
-                    </div>
-                    <div class="hidden sm:block text-xs text-gray-400 font-medium italic pr-2">Reservado</div>
-                `;
-            } else {
-                slotElement.classList.add('bg-surface-light', 'dark:bg-surface-dark', 'border', 'border-gray-100', 'dark:border-gray-700', 'shadow-sm', 'hover:shadow-md', 'hover:border-primary/30');
-                slotElement.innerHTML = `
-                    <div class="flex items-center gap-4">
-                        <div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary dark:text-primary">
-                            <span class="material-symbols-outlined">sports_tennis</span>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h4 class="text-lg font-bold text-text-main dark:text-white">${slot} - ${getEndTime(slot)}</h4>
-                                <span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">Libre</span>
-                            </div>
-                            <p class="text-sm text-text-secondary">${court.name} • ${court.type}</p>
-                        </div>
-                    </div>
-                    <button data-court-id="${court.id}" data-date="${currentDay}" data-slot="${slot}" class="w-full sm:w-auto mt-2 sm:mt-0 px-5 py-2.5 bg-primary hover:bg-primary-dark text-black text-sm font-bold rounded-lg transition-colors shadow-sm shadow-primary/20 flex items-center justify-center gap-2">
-                        <span>Reservar</span>
-                        <span class="material-symbols-outlined text-lg">add_circle</span>
-                    </button>
-                `;
-            }
-            scheduleContainer.appendChild(slotElement);
-        });
-    }
-
-    function generateTimeSlots() {
-        const slots = [];
-        let hour = 9;
-        let minute = 0;
-
-        while (hour < 22) {
-            slots.push(`${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`);
-            minute += 90;
-            if (minute >= 60) {
-                hour += Math.floor(minute / 60);
-                minute %= 60;
-            }
-        }
-        return slots;
-    }
-
-    function getEndTime(startTime) {
-        const [hours, minutes] = startTime.split(':').map(Number);
-        const date = new Date();
-        date.setHours(hours, minutes, 0, 0);
-        date.setMinutes(date.getMinutes() + 90);
-        return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
-    }
-
-    scheduleContainer.addEventListener('click', (e) => {
-        const button = e.target.closest('button');
-        if (button && button.dataset.slot) {
-            const { courtId, date, slot } = button.dataset;
-            window.location.href = `/confirmar_reserva/code.html?courtId=${courtId}&date=${date}&slot=${slot}`;
-        }
-    });
-
-    fetchSchedule();
-});
-</script>
+<script src="/assets/js/calendar.js"></script>
 </body>
 </html>
