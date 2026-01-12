@@ -174,7 +174,7 @@ app.post('/api/reservations', authenticateToken, async (req, res) => {
     // IMPORTANT: Treat the incoming date and slot as UTC to ensure consistency
     const utcDateTimeString = `${date}T${slot}:00.000Z`;
     const startTime = new Date(utcDateTimeString);
-	
+
     // Calculate the end time (90 minutes later)
     const endTime = new Date(startTime.getTime() + 90 * 60 * 1000);
 
