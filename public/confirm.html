@@ -98,7 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Pista no encontrada');
             }
 
-            const formattedDate = new Date(date).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            // Correctly handle the date to avoid timezone issues
+            const dateParts = date.split('-').map(part => parseInt(part, 10));
+            const localDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+
+            const formattedDate = localDate.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             const endTime = getEndTime(slot);
 
             detailsContainer.innerHTML = `

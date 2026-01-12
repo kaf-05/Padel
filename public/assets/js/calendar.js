@@ -41,29 +41,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function renderWeekGrid() {
         scheduleGrid.innerHTML = '<p>Cargando horarios...</p>';
-        const startDate = new Date(currentDate);
-        startDate.setHours(0, 0, 0, 0);
 
-        monthYearElement.textContent = startDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' });
-        const endDate = new Date(startDate);
-        endDate.setDate(endDate.getDate() + 6);
-        weekRangeElement.textContent = `${startDate.getDate()} de ${startDate.toLocaleDateString('es-ES', { month: 'short' })} - ${endDate.getDate()} de ${endDate.toLocaleDateString('es-ES', { month: 'short' })}`;
+        const startOfDay = new Date(currentDate);
+        startOfDay.setUTCHours(0, 0, 0, 0);
 
-        // Disable prev-week button if we are at the current week
+        monthYearElement.textContent = startOfDay.toLocaleDateString('es-ES', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+        const endDate = new Date(startOfDay);
+        endDate.setUTCDate(endDate.getUTCDate() + 6);
+        weekRangeElement.textContent = `${startOfDay.getUTCDate()} de ${startOfDay.toLocaleDateString('es-ES', { month: 'short', timeZone: 'UTC' })} - ${endDate.getUTCDate()} de ${endDate.toLocaleDateString('es-ES', { month: 'short', timeZone: 'UTC' })}`;
+
         const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        prevWeekButton.disabled = startDate.getTime() <= today.getTime();
+        today.setUTCHours(0, 0, 0, 0);
+        prevWeekButton.disabled = startOfDay.getTime() <= today.getTime();
         prevWeekButton.classList.toggle('opacity-50', prevWeekButton.disabled);
-
 
         const timeSlots = generateTimeSlots();
         const days = Array.from({ length: 7 }, (_, i) => {
-            const day = new Date(startDate);
-            day.setDate(day.getDate() + i);
+            const day = new Date(startOfDay);
+            day.setUTCDate(day.getUTCDate() + i);
             return day;
         });
 
-        const schedule = await fetchScheduleForWeek(startDate);
+        const schedule = await fetchScheduleForWeek(startOfDay);
 
         let table = '<table class="w-full border-collapse">';
         // Header
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             table += `<tr class="border-b dark:border-gray-700"><td class="p-4 text-center text-sm font-bold">${slot}</td>`;
             days.forEach(day => {
                 const dateString = day.toISOString().split('T')[0];
-                const slotDateTime = new Date(`${dateString}T${slot}:00`);
+                const slotDateTime = new Date(`${dateString}T${slot}:00.000Z`);
                 const isBooked = schedule.some(booking => new Date(booking.start_time).getTime() === slotDateTime.getTime());
 
                 let cellClass = 'p-2 text-center ';

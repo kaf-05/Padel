@@ -142,11 +142,11 @@ app.get('/api/courts', async (req, res) => {
 app.get('/api/schedule', async (req, res) => {
   try {
     const { date } = req.query;
-    const queryDate = date ? new Date(date) : new Date();
-    // Start of the day in UTC
-    const startDate = new Date(Date.UTC(queryDate.getUTCFullYear(), queryDate.getUTCMonth(), queryDate.getUTCDate(), 0, 0, 0, 0));
-    // End of the day in UTC
-    const endDate = new Date(Date.UTC(queryDate.getUTCFullYear(), queryDate.getUTCMonth(), queryDate.getUTCDate(), 23, 59, 59, 999));
+    const queryDate = date ? new Date(date) : new Date(new Date().setHours(0,0,0,0));
+
+    const startDate = new Date(queryDate);
+    const endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 7);
 
     const [rows] = await db.query('SELECT court_id, start_time FROM reservations WHERE start_time >= ? AND start_time < ?', [startDate, endDate]);
     res.json(rows);
@@ -171,13 +171,9 @@ app.post('/api/reservations', authenticateToken, async (req, res) => {
   try {
     const { court_id, date, slot } = req.body;
 
-    // The incoming date and slot are treated as local time.
-    // We combine them to create a local time string.
-    const localDateTimeString = `${date}T${slot}:00`;
-    const startTime = new Date(localDateTimeString);
-	// 2. Restas las horas deseadas
-	const horasARestar = 1;
-	startTime.setHours(startTime.getHours() - horasARestar);
+    // IMPORTANT: Treat the incoming date and slot as UTC to ensure consistency
+    const utcDateTimeString = `${date}T${slot}:00.000Z`;
+    const startTime = new Date(utcDateTimeString);
 	
     // Calculate the end time (90 minutes later)
     const endTime = new Date(startTime.getTime() + 90 * 60 * 1000);
