@@ -10,7 +10,11 @@ const fs = require('fs').promises;
 const app = express();
 const port = process.env.PORT || 3000;
 const saltRounds = 10;
-const jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret';
+const jwtSecret = process.env.JWT_SECRET;
+if (!jwtSecret) {
+    console.error('FATAL ERROR: JWT_SECRET is not defined.');
+    process.exit(1);
+}
 
 app.use(express.json());
 app.use(cookieParser());
@@ -174,6 +178,13 @@ app.post('/api/reservations', authenticateToken, async (req, res) => {
     // IMPORTANT: Treat the incoming date and slot as UTC to ensure consistency
     const utcDateTimeString = `${date}T${slot}:00.000Z`;
     const startTime = new Date(utcDateTimeString);
+
+    // --- VALIDATION ---
+    // 1. Check if the requested time is in the past
+    const now = new Date();
+    if (startTime < now) {
+        return res.status(400).json({ error: 'No se puede reservar en una fecha o hora pasada.' });
+    }
 
     // Calculate the end time (90 minutes later)
     const endTime = new Date(startTime.getTime() + 90 * 60 * 1000);

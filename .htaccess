@@ -4,4 +4,4 @@ PassengerStartupFile server.js
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . - [L]
+RewriteRule (.*) server.js [L]
